@@ -1,0 +1,65 @@
+---
+interface Props {
+    title: "Page Not Found";
+}
+import BaseHead from "../components/BaseHead.astro";
+---
+
+<style>
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #e0eafc, #cfdef3);
+    color: #2c3e50;
+    text-align: center;
+    padding: 2rem;
+}
+h1 {
+    font-size: 6rem;
+    margin-bottom: 1rem;
+    animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+   }
+    50% {
+        transform: translateY(-10px);
+   }
+}
+p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+a {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: #0070f3;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+a:hover {
+    background-color: #005bb5;
+}
+</style>
+<head>
+    <BaseHead
+        title="Page Not Found"
+        description="Sorry, this page doesn’t exist."
+    />
+</head>
+<div class="container">
+    <h1>404</h1>
+    <p>Sorry, we couldn't find the page you were looking for.</p>
+    <a href="/">Return Home</a>
+</div>

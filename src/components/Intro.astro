@@ -1,0 +1,115 @@
+<div id="intro-overlay" class="hidden">
+    <div class="typing-container">
+        <h1 id="typed-text"></h1>
+        <span class="cursor">|</span>
+    </div>
+</div>
+
+<style>
+#intro-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+}
+#intro-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+#intro-overlay.finished {
+    display: none;
+}
+#typed-text {
+    color: #fff;
+}
+.typing-container {
+    color: #fff;
+    font-size: 2.4rem;
+    font-family: monospace;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+}
+.cursor {
+    display: inline-block;
+    margin-left: 0.1em;
+    width: 1ch;
+    color: #fff;
+    animation: blink 0.7s infinite;
+    font-size: 3em;
+    line-height: 2;
+    transform: translateY(-0.1em);
+}
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+   }
+    50% {
+        opacity: 0;
+   }
+}
+#intro-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+@media only screen and (max-width: 720px) {
+    .cursor {
+        font-size: 2.8em;
+   }
+    .typing-container {
+        font-size: 0.9em;
+        line-height: 1;
+   }
+}
+</style>
+
+<script is:inline type="module" lang="ts">
+    const text = "Seraphicfae";
+    const typingSpeed = 125;
+
+    window.addEventListener("DOMContentLoaded", () => {
+        const overlay = document.getElementById("intro-overlay");
+        const typedText = document.getElementById("typed-text");
+
+        if (!overlay || !typedText) return;
+
+        if (sessionStorage.getItem("introPlayed") === "true") {
+            overlay.classList.add("finished");
+            return;
+        }
+
+        overlay.classList.remove("hidden");
+
+        let index = 0;
+
+        const typeNextChar = () => {
+            if (index < text.length) {
+                typedText.textContent += text[index];
+                index++;
+                setTimeout(typeNextChar, typingSpeed);
+            } else {
+                sessionStorage.setItem("introPlayed", "true");
+
+                setTimeout(() => {
+                    overlay.classList.add("hidden");
+
+                    setTimeout(() => {
+                        overlay.classList.add("finished");
+                    }, 500);
+                }, 500);
+            }
+        };
+
+        setTimeout(typeNextChar, 500);
+    });
+</script>

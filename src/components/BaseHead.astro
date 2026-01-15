@@ -1,0 +1,64 @@
+---
+import "../styles/global.css";
+
+interface Props {
+    title: string;
+    description: string;
+    image?: string;
+}
+
+const {
+    title,
+    description,
+    image = "/assets/metatag-placeholder.webp",
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const fullImageURL = new URL(image, Astro.url);
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" type="image/gif" href="/favicon.gif" />
+<link rel="stylesheet" href="/icons/css/all.css" />
+<link rel="sitemap" href="/sitemap-index.xml" />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Font preloads -->
+<link
+    rel="preload"
+    href="/fonts/Raleway-Regular.ttf"
+    as="font"
+    type="font/ttf"
+    crossorigin
+/>
+<link
+    rel="preload"
+    href="/fonts/Raleway-Bold.ttf"
+    as="font"
+    type="font/ttf"
+    crossorigin
+/>
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL.href} />
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={Astro.url.href} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={fullImageURL.href} />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={Astro.url.href} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={fullImageURL.href} />

@@ -1,0 +1,45 @@
+---
+import HeaderLink from "./HeaderLink.astro";
+import { ClientRouter } from 'astro:transitions';
+---
+
+<header>
+    <ClientRouter />
+    <nav>
+        <div class="internal-links">
+            <HeaderLink href="/">/home/faye</HeaderLink>
+            <HeaderLink href="/projects">/bin/projects</HeaderLink>
+        </div>
+    </nav>
+</header>
+
+<style>
+header {
+     display: flex;
+     justify-content: center;
+     margin: 1rem auto;
+     padding: 0rem 1.5rem;
+     color: var(--color);
+     border-radius: 1rem;
+     backdrop-filter: blur(1.4px) saturate(0%);
+     -webkit-backdrop-filter: blur(1.4px) saturate(0%);
+     background: rgba(30, 30, 30, 0);
+     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+     max-width: 700px;
+     width: 80%;
+     position: relative;
+     z-index: 10;
+     border: 1px solid rgba(255, 255, 255, 0.1);
+}
+ nav {
+     display: flex;
+     gap: 1em;
+     max-width: 800px;
+     flex-wrap: wrap;
+     justify-content: center;
+}
+ .internal-links {
+     display: flex;
+     gap: 1em;
+}
+</style>

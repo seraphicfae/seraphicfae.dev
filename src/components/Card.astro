@@ -1,0 +1,118 @@
+<main class="card">
+    <img src="/assets/banner.webp" class="banner" alt="Banner" />
+    <img src="/assets/pfp.jpg" alt="Profile" class="pfp" />
+
+    <div class="heading">
+        <h1>MeiMei // Faye</h1>
+        <p>@seraphicfae • she/her</p>
+    </div>
+
+    <section class="info">
+        <p><i class="fas fa-cake-candles icon"></i> Adult</p>
+        <p><i class="fas fa-location-dot icon"></i> North America</p>
+        <p><i class="fa-solid fa-language"></i> EN/ES</p>
+    </section>
+
+    <section class="description">
+        <p>
+            Self-taught frontend developer with 5 years of on and off
+            experience. I Like Docker, Emulation, Linux, Home Servers
+            and much more! I also value standardization and optimization.
+        </p>
+    </section>
+</main>
+
+<aside class="visitor-stats">
+    <img src="https://count.getloli.com/@seraphicfae?name=seraphicfae&theme=moebooru&padding=7&offset=0&align=top&scale=1&pixelated=1&darkmode=auto" alt="Counter" />
+    <p>Visitors on profiles since Dec 24, 2025</p>
+</aside>
+
+<style>
+
+<style>
+html, body {
+    margin: 0;
+    height: 100%;
+}
+.card {
+    background: var(--card-bg);
+    border: 2px solid var(--accent);
+    color: var(--text);
+    border-radius: 10px;
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+    padding-bottom: 2rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    text-align: center;
+    padding: 0em !important;
+    animation: float 4s ease-in-out infinite;
+}
+.visitor-stats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2.5rem;
+    text-align: center;
+}
+.visitor-stats p {
+    font-style: italic;
+    opacity: 0.6;
+}
+.banner {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    padding: 0em 0em !important;
+}
+.pfp {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid var(--accent);
+    position: absolute;
+    top: 60px;
+    left: 5px;
+    background: var(--card-bg);
+}
+.heading {
+    text-align: left;
+    padding-left: 20px;
+    margin-top: 50px;
+}
+.heading h1 {
+    font-size: 1.5rem;
+    margin: 0;
+    color: var(--accent);
+}
+.heading p {
+    font-size: 0.9rem;
+    margin: 4px 0 0;
+    opacity: 0.8;
+}
+.info, .description {
+    text-align: left;
+    padding: 0 20px;
+    margin-top: 20px;
+    color: var(--text);
+}
+@media only screen and (min-width: 720px) {
+    .card {
+        width: 450px;
+   }
+   .visitor-stats img {
+       width: 500px;
+   }
+}
+@keyframes float {
+    0%, 100% {
+        transform: translateY(20px);
+   }
+    50% {
+        transform: translateY(0px);
+   }
+}
+</style>
