@@ -6,5 +6,3 @@ cd my-website
 bun install
 bun run dev
 ```
-
-:3
