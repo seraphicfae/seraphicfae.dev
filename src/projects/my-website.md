@@ -1,6 +1,6 @@
 ---
 title: 'Website'
-description: 'The cutest personal site ever!'
+description: 'The cutest personal website!'
 pubDate: 'May 23 2025'
 heroImage: '/assets/website-hero.webp'
 ---
