@@ -15,5 +15,5 @@ But, I was looking for a framework to make websites. I was thinking of <u>[Hugo]
 I decided to go with <u>[Astro](https://astro.build)</u>. And that has basically led up to here. 
 
 Links: \
-<u>[Source code](https://github.com/seraphicfae/my-website)</u> •
+<u>[Source code](https://github.com/seraphicfae/seraphicfae.dev)</u> •
 <u>[Artist](https://x.com/hana87z/status/1974281476549345338)</u>

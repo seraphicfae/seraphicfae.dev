@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "my-website",
+      "name": "seraphicfae.dev",
       "dependencies": {
         "@astrojs/mdx": "^4.3.0",
         "@astrojs/node": "^9.2.2",
