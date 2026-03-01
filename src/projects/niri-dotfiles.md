@@ -12,7 +12,7 @@ Thanks to:
 - <u>[Adi1090x](https://github.com/adi1090x/rofi/)</u> for the base rofi config
 
 ## Showcase
-<video controls width="100%" style="max-width: 1080px;" src="https://github.com/user-attachments/assets/25b80fc7-52d7-4830-9999-8a66079345f3">
+<video controls width="100%" style="max-width: 1080px;" src="https://github.com/user-attachments/assets/f669cc6b-0aa4-4335-ac2b-7ba5d41a7f69">
   Your browser does not support the video tag.
 </video>
 
