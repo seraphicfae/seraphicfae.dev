@@ -2,7 +2,7 @@
 title: 'Niri Dotfiles'
 description: 'No place like ~'
 pubDate: 'December 21 2025'
-heroImage: '/assets/niri-dotfiles-hero.webp'
+heroImage: '/assets/niri-dotfile-hero.webp'
 ---
 
 please check <u>[Github](https://github.com/seraphicfae/niri-dotfiles)</u> for the latest update
