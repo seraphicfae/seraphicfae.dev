@@ -2,7 +2,7 @@
 title: 'Website'
 description: 'The cutest personal website!'
 pubDate: 'May 23 2025'
-heroImage: '/assets/website-hero.webp'
+heroImage: '/assets/seraphicfae.jpg'
 ---
 
 ## Hello! Hi! haiii!!
@@ -16,4 +16,4 @@ I decided to go with <u>[Astro](https://astro.build)</u>. And that has basically
 
 Links: \
 <u>[Source code](https://github.com/seraphicfae/seraphicfae.dev)</u> •
-<u>[Artist](https://x.com/hana87z/status/1974281476549345338)</u>
+<u>[Artist](https://x.com/ch7_linh0612/status/1927024555232530557)</u>
