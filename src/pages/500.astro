@@ -1,0 +1,82 @@
+---
+interface Props {
+    error: unknown;
+    title: "Server error";
+}
+
+import BaseHead from "../components/BaseHead.astro";
+const { error } = Astro.props;
+---
+
+<link rel="icon" type="image/gif" href="../favicon.gif" />
+
+<style>
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #ffe6e6, #ffdede);
+    color: #2c3e50;
+    text-align: center;
+    padding: 2rem;
+}
+h1 {
+    font-size: 5rem;
+    margin-bottom: 0.5rem;
+    animation: shake 1s ease-in-out infinite alternate;
+}
+@keyframes shake {
+    0% {
+        transform: rotate(-1deg);
+   }
+    100% {
+        transform: rotate(1deg);
+   }
+}
+p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+}
+code {
+    display: block;
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    word-break: break-word;
+}
+a {
+    margin-top: 2rem;
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: #e74c3c;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+a:hover {
+    background-color: #c0392b;
+}
+</style>
+
+<head>
+    <BaseHead
+        title="Page Not Found"
+        description="Sorry, this page doesn’t exist."
+    />
+</head>
+<div class="container">
+    <h1>500</h1>
+    <p>Something went wrong on our end. Here's the error message:</p>
+    <code>{error instanceof Error ? error.message : "Unknown error"}</code>
+    <a href="/">Return Home</a>
+</div>
