@@ -3,7 +3,6 @@ import Layout from '../layouts/Layout.astro';
 import { Icon } from 'astro-icon/components';
 import { Image } from 'astro:assets';
 import friends from '../data/friends.json';
-import profilePic from '../assets/profile.jpg';
 import stack from '../data/stack.json';
 
 const discordId = '1446807800411062364';
@@ -119,6 +118,8 @@ try {
                   alt={friend.name}
                   width={40}
                   height={40}
+                  loading="lazy"
+                  decoding="async"
                   class="w-10 h-10 rounded-[14px] object-cover ring-2 ring-transparent group-hover:ring-neutral-300 dark:group-hover:ring-neutral-600 transition-all"
                 />
                 <span class="absolute -top-8 left-1/2 -translate-x-1/2 bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
@@ -143,6 +144,8 @@ try {
                     alt={review.sender.username}
                     width={32}
                     height={32}
+                    loading="lazy"
+                    decoding="async"
                     class="w-8 h-8 rounded-[10px] object-cover shrink-0"
                   />
                   <div class="flex flex-col gap-0.5">
