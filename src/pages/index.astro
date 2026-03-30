@@ -1,23 +1,175 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import Card from "../components/Card.astro";
-import Intro from "../components/Intro.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import Layout from '../layouts/Layout.astro';
+import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
+import friends from '../data/friends.json';
+import profilePic from '../assets/profile.jpg';
+import stack from '../data/stack.json';
+
+const discordId = '1446807800411062364';
+
+let reviews = [];
+try {
+  const res = await fetch(`https://manti.vendicated.dev/api/reviewdb/users/${discordId}/reviews`);
+  const data = await res.json();
+  reviews = (data.reviews ?? []).sort((a: any, b: any) => b.timestamp - a.timestamp);
+} catch (e) {
+  console.error('mantikafasi pls fix:', e);
+  reviews = [];
+}
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<Intro />
-	<body>
-		<Header />
-		<main>
-			<Card />
-		</main>
-		<Footer />
-	</body>
-</html>
+<Layout title="seraphicfae" description="meow meow meow">
+  <div class="max-w-5xl mx-auto px-6 py-16">
+
+    <!-- responsive grid 1 column on mobile and 2 column on desktop -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
+
+      <!-- LEFT COLUMN -->
+      <div class="flex flex-col gap-12">
+
+        <!-- profile -->
+        <section class="flex flex-col gap-6">
+          <div class="flex items-center gap-6">
+            <div class="relative shrink-0">
+              <Image
+                src={profilePic}
+                alt="seraphicfae"
+                width={96}
+                height={96}
+                class="w-24 h-24 rounded-4xl object-cover"
+              />
+              <span class="absolute bottom-1 right-1 w-4 h-4 rounded-full bg-green-500 ring-2 ring-white dark:ring-neutral-950"></span>
+            </div>
+            <div class="flex flex-col gap-1">
+              <h1 class="text-2xl font-medium">Mei Mei</h1>
+              <p class="text-sm text-neutral-500 dark:text-neutral-400">@seraphicfae</p>
+              <p class="text-xs text-neutral-400">she/her</p>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <div class="flex items-center gap-2 text-sm text-neutral-500 dark:text-neutral-400">
+              <Icon name="lucide:cake" class="size-4 shrink-0" />
+              <span>Adult</span>
+            </div>
+            <div class="flex items-center gap-2 text-sm text-neutral-500 dark:text-neutral-400">
+              <Icon name="lucide:map-pin" class="size-4 shrink-0" />
+              <span>North America</span>
+            </div>
+            <div class="flex items-center gap-2 text-sm text-neutral-500 dark:text-neutral-400">
+              <Icon name="lucide:languages" class="size-4 shrink-0" />
+              <span>EN / ES</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- about me -->
+        <section class="flex flex-col gap-3">
+          <h2 class="text-xs font-medium uppercase tracking-widest text-neutral-400">About me</h2>
+          <p class="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
+            Mostly a frontend website developer with an interest in Linux and servers :)
+            I mostly play switch games and a bit of cs2. I obsess over standards and
+            <a class="underline" href="https://0pointer.net/blog/fitting-everything-together.html" target="_blank" rel="noopener noreferrer">reproducibility</a>.
+            Also, Opus and FLAC are awesome audio codecs.
+          </p>
+        </section>
+
+        <!-- tech stack -->
+        <section class="flex flex-col gap-3">
+          <h2 class="text-xs font-medium uppercase tracking-widest text-neutral-400">Stack & tools</h2>
+          <div class="flex flex-wrap gap-2">
+            {stack.map((item) => (
+             <a
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={`--brand: ${item.color}`}
+                class="group flex items-center gap-2 px-3 py-1.5 rounded-lg border border-neutral-200 dark:border-neutral-800 transition-all duration-200 group-hover:text-(--brand) hover:shadow-[0_0_0_2px_var(--brand)]"
+              >
+                <Icon
+                  name={item.icon}
+                  class="size-4 text-neutral-500 dark:text-neutral-400 transition-colors duration-200 group-hover:text-(--brand)"
+                />
+                <span class="text-sm text-neutral-500 dark:text-neutral-400 transition-colors duration-200 group-hover:text-(--brand)">
+                  {item.name}
+                </span>
+              </a>
+            ))}
+          </div>
+        </section>
+
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="flex flex-col gap-12">
+
+        <!-- friends -->
+        <section class="flex flex-col gap-3">
+          <h2 class="text-xs font-medium uppercase tracking-widest text-neutral-400">Friends</h2>
+          <div class="flex flex-wrap gap-3">
+            {friends.map((friend) => (
+            <a
+                href={friend.source}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={friend.name}
+                class="group relative"
+              >
+                <img
+                  src={friend.avatar}
+                  alt={friend.name}
+                  width={40}
+                  height={40}
+                  class="w-10 h-10 rounded-[14px] object-cover ring-2 ring-transparent group-hover:ring-neutral-300 dark:group-hover:ring-neutral-600 transition-all"
+                />
+                <span class="absolute -top-8 left-1/2 -translate-x-1/2 bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+                  {friend.name}
+                </span>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        <!-- reviewdb -->
+        <section class="flex flex-col gap-3">
+          <h2 class="text-xs font-medium uppercase tracking-widest text-neutral-400">ReviewDB</h2>
+          {reviews.length === 0 ? (
+            <p class="text-sm text-neutral-400">no reviews yet.</p>
+          ) : (
+            <div class="flex flex-col gap-3">
+              {reviews.slice(0, 5).map((review: any) => (
+                <div class="flex gap-3 items-start">
+                  <img
+                    src={review.sender.profilePhoto}
+                    alt={review.sender.username}
+                    width={32}
+                    height={32}
+                    class="w-8 h-8 rounded-[10px] object-cover shrink-0"
+                  />
+                  <div class="flex flex-col gap-0.5">
+                    <span class="text-xs font-medium text-neutral-600 dark:text-neutral-300">
+                      {review.sender.username}
+                    </span>
+                    <p class="text-sm text-neutral-500 dark:text-neutral-400">
+                      {review.comment}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+          <a
+            href={`https://reviewdb.mantikafasi.dev/dashboard?query=${discordId}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-xs text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-200 transition-colors w-fit"
+          >
+            view all on ReviewDB →
+          </a>
+        </section>
+
+      </div>
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="800"
+   height="800"
+   viewBox="0 0 800 800"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
+   sodipodi:docname="blobcat.svg"
+   inkscape:label="eyes"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <sodipodi:namedview
+     id="namedview364"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     showgrid="true"
+     inkscape:current-layer="svg5">
+    <inkscape:grid
+       type="xygrid"
+       id="grid694" />
+  </sodipodi:namedview>
+  <title
+     id="title1375">Blobcat</title>
+  <defs
+     id="defs2">
+    <linearGradient
+       id="face"
+       inkscape:swatch="solid"
+       gradientTransform="matrix(1.3651405,-2.186435e-8,0,1.3700818,276.95279,-209.54952)">
+      <stop
+         style="stop-color:#2b2b00;stop-opacity:1;"
+         offset="0"
+         id="stop999" />
+    </linearGradient>
+    <linearGradient
+       id="blob_body"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#fcc314;stop-opacity:1;"
+         offset="0"
+         id="stop5823" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#face"
+       id="linearGradient1517"
+       x1="261.74738"
+       y1="438.59274"
+       x2="458.55441"
+       y2="438.59274"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#face"
+       id="linearGradient3200"
+       x1="539.43036"
+       y1="437.90143"
+       x2="660.23444"
+       y2="437.90143"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.0455177,0,0,1.0676148,-27.553494,-29.621238)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#face"
+       id="linearGradient5554"
+       gradientUnits="userSpaceOnUse"
+       x1="539.43036"
+       y1="437.90143"
+       x2="660.23444"
+       y2="437.90143"
+       gradientTransform="matrix(0.97471167,0.41127683,-0.39920703,1.0041815,172.33736,-171.29859)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#face"
+       id="linearGradient5558"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-0.95879011,0.26982027,-0.25400493,-1.0184881,833.71113,674.46004)"
+       x1="539.43036"
+       y1="437.90143"
+       x2="660.23444"
+       y2="437.90143" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#face"
+       id="linearGradient5562"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-0.82062932,0.62276988,-0.57190387,-0.87794401,878.71854,475.67483)"
+       x1="539.43036"
+       y1="437.90143"
+       x2="660.23444"
+       y2="437.90143" />
+  </defs>
+  <path
+     style="display:inline;fill:url(#blob_body);fill-opacity:1;stroke:none;stroke-width:0.879001px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M 734.76398,524.38093 C 778.38483,630.44923 633.59366,704.05086 400,701.64339 -149.52419,731.38788 106.91085,311.79915 110.79312,287.0949 124.02564,202.89171 99.887845,96.087964 134.02148,61.479696 167.38321,27.654069 257.84593,138.26635 257.84593,138.26635 386.56706,68.917578 535.2101,93.263205 609.53613,135.67317 c 10.00424,2.61771 98.23653,-73.252955 132.15277,-45.318376 32.81418,27.026886 -27.41922,139.441196 -12.121,178.997466 48.43725,125.24316 -14.56977,206.96611 5.19608,255.02867 z"
+     id="blobcat_body"
+     sodipodi:nodetypes="scssccsss"
+     inkscape:label="body"
+     sodipodi:insensitive="true" />
+  <path
+     style="fill:none;stroke:url(#linearGradient1517);stroke-width:25;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="m 263.70657,397.34512 c 4.69711,26.71045 15.77906,50.68454 29.77909,73.40802 15,-5 56.70837,-59.39586 56.70837,-59.39586 0,0 15.897,35.93898 45.897,73.93898 21.5,-16 62.13813,-55.22229 62.13813,-55.22229"
+     id="mouth"
+     inkscape:label="mouth"
+     sodipodi:nodetypes="ccccc"
+     sodipodi:insensitive="true" />
+  <g
+     inkscape:label="eyes"
+     id="eyes"
+     style="display:inline"
+     sodipodi:insensitive="true">
+    <ellipse
+       style="display:inline;fill:url(#face);fill-opacity:1;stroke:none;stroke-width:1.21563;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+       id="eye_right"
+       cx="588.24109"
+       cy="177.28984"
+       rx="47.294041"
+       ry="58.491283"
+       transform="matrix(0.96362231,0.26726773,-0.26103537,0.96532924,0,0)"
+       inkscape:label="eye right" />
+    <ellipse
+       style="display:inline;fill:url(#face);fill-opacity:1;stroke:none;stroke-width:1.18217;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+       id="eye_left"
+       cx="344.33606"
+       cy="152.35382"
+       rx="46.064701"
+       ry="56.792007"
+       transform="matrix(0.89475589,0.4465556,-0.44378819,0.89613171,0,0)"
+       inkscape:label="eye left" />
+  </g>
+  <g
+     id="whiskers"
+     inkscape:label="whiskers"
+     sodipodi:insensitive="true">
+    <path
+       style="fill:url(#linearGradient3200);fill-opacity:1;stroke:none;stroke-width:1.05651px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 662.73326,453.19881 c -2.09104,3.73665 -131.95589,-8.36304 -126.11437,-26.33101 5.84151,-17.96797 128.2054,22.59436 126.11437,26.33101 z"
+       id="whisker_right_top"
+       sodipodi:nodetypes="zzz"
+       inkscape:label="whisker right top" />
+    <path
+       style="fill:url(#linearGradient5554);fill-opacity:1;stroke:none;stroke-width:1.0691px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 635.33743,554.37336 c -3.34663,2.69209 -119.89224,-59.77382 -107.72766,-74.37632 12.16457,-14.6025 111.07431,71.68425 107.72766,74.37632 z"
+       id="whisker_right_bottom"
+       sodipodi:nodetypes="zzz"
+       inkscape:label="whisker right bottom" />
+    <path
+       style="fill:url(#linearGradient5558);fill-opacity:1;stroke:none;stroke-width:1.02228px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 85.813283,392.00179 c 1.028542,-4.10435 122.999607,-26.07608 121.917567,-7.42739 -1.08206,18.64871 -122.946145,11.53173 -121.917567,7.42739 z"
+       id="whisker_left_top"
+       sodipodi:nodetypes="zzz"
+       inkscape:label="whisker left top" />
+    <path
+       style="fill:url(#linearGradient5562);fill-opacity:1;stroke:none;stroke-width:1.03761px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 78.272028,489.80595 C 77.911605,485.48761 186.32445,418.0828 191.36458,436.33812 196.4047,454.59349 78.632417,494.1243 78.272028,489.80595 Z"
+       id="whisker_left_bottom"
+       sodipodi:nodetypes="zzz"
+       inkscape:label="whisker left bottom" />
+  </g>
+  <metadata
+     id="metadata1373">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>Blobcat</dc:title>
+        <dc:date>2022-06-10</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>tastytea</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:source>https://schlomp.space/tastytea/blobcats/src/branch/main/svg/blobcat.svg</dc:source>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>blobcat</rdf:li>
+            <rdf:li>emoji</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <cc:license
+           rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/" />
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/publicdomain/zero/1.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>
