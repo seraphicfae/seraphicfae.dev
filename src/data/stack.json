@@ -28,5 +28,17 @@
     "icon": "simple-icons:typescript",
     "url": "https://typescriptlang.org",
     "color": "#3178C6"
+  },
+  {
+    "name": "Git",
+    "icon": "simple-icons:git",
+    "url": "https://git-scm.com/",
+    "color": "#F1502F"
+  },
+  {
+    "name": "NodeJS",
+    "icon": "simple-icons:nodedotjs",
+    "url": "https://nodejs.org",
+    "color": "#68a063"
   }
 ]
