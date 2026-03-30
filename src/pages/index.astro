@@ -21,8 +21,6 @@ try {
 
 <Layout title="seraphicfae" description="meow meow meow">
   <div class="max-w-5xl mx-auto px-6 py-16">
-
-    <!-- responsive grid 1 column on mobile and 2 column on desktop -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
 
       <!-- LEFT COLUMN -->
@@ -44,7 +42,7 @@ try {
             <div class="flex flex-col gap-1">
               <h1 class="text-2xl font-medium">Mei Mei</h1>
               <p class="text-sm text-neutral-500 dark:text-neutral-400">@seraphicfae</p>
-              <p class="text-xs text-neutral-400">she/her</p>
+              <p class="text-xs text-neutral-500 dark:text-neutral-400">she/her</p>
             </div>
           </div>
 
@@ -66,7 +64,7 @@ try {
 
         <!-- about me -->
         <section class="flex flex-col gap-3">
-          <h2 class="text-xs font-medium uppercase tracking-widest text-neutral-400">About me</h2>
+          <h2 class="text-xs font-medium uppercase tracking-widest text-neutral-500 dark:text-neutral-400">About me</h2>
           <p class="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
             Mostly a frontend website developer with an interest in Linux and servers :)
             I mostly play switch games and a bit of cs2. I obsess over standards and
@@ -77,15 +75,15 @@ try {
 
         <!-- tech stack -->
         <section class="flex flex-col gap-3">
-          <h2 class="text-xs font-medium uppercase tracking-widest text-neutral-400">Stack & tools</h2>
+          <h2 class="text-xs font-medium uppercase tracking-widest text-neutral-500 dark:text-neutral-400">Stack & tools</h2>
           <div class="flex flex-wrap gap-2">
             {stack.map((item) => (
-             <a
+              <a
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={`--brand: ${item.color}`}
-                class="group flex items-center gap-2 px-3 py-1.5 rounded-lg border border-neutral-200 dark:border-neutral-800 transition-all duration-200 group-hover:text-(--brand) hover:shadow-[0_0_0_2px_var(--brand)]"
+                class="group flex items-center gap-2 px-3 py-1.5 rounded-lg border border-neutral-200 dark:border-neutral-800 transition-all duration-200 hover:border-neutral-400 dark:hover:border-neutral-600"
               >
                 <Icon
                   name={item.icon}
@@ -106,14 +104,14 @@ try {
 
         <!-- friends -->
         <section class="flex flex-col gap-3">
-          <h2 class="text-xs font-medium uppercase tracking-widest text-neutral-400">Friends</h2>
+          <h2 class="text-xs font-medium uppercase tracking-widest text-neutral-500 dark:text-neutral-400">Friends</h2>
           <div class="flex flex-wrap gap-3">
             {friends.map((friend) => (
-            <a
+              <a
                 href={friend.source}
                 target="_blank"
                 rel="noopener noreferrer"
-                title={friend.name}
+                aria-label={friend.name}
                 class="group relative"
               >
                 <img
@@ -133,9 +131,9 @@ try {
 
         <!-- reviewdb -->
         <section class="flex flex-col gap-3">
-          <h2 class="text-xs font-medium uppercase tracking-widest text-neutral-400">ReviewDB</h2>
+          <h2 class="text-xs font-medium uppercase tracking-widest text-neutral-500 dark:text-neutral-400">ReviewDB</h2>
           {reviews.length === 0 ? (
-            <p class="text-sm text-neutral-400">no reviews yet.</p>
+            <p class="text-sm text-neutral-500 dark:text-neutral-400">no reviews yet.</p>
           ) : (
             <div class="flex flex-col gap-3">
               {reviews.slice(0, 5).map((review: any) => (
@@ -163,7 +161,7 @@ try {
             href={`https://reviewdb.mantikafasi.dev/dashboard?query=${discordId}`}
             target="_blank"
             rel="noopener noreferrer"
-            class="text-xs text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-200 transition-colors w-fit"
+            class="text-xs text-neutral-500 dark:text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 transition-colors w-fit"
           >
             view all on ReviewDB →
           </a>

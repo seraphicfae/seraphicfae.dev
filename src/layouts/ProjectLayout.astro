@@ -29,7 +29,13 @@ const formattedDate = date.toLocaleDateString('en-US', {
 
     {heroImage && (
       <div class="mb-8">
-        <Image src={heroImage} alt={title} class="w-full rounded-xl object-cover max-h-72" />
+        <Image
+          src={heroImage}
+          alt={title}
+          width={800}
+          quality={80}
+          class="w-full rounded-xl object-cover max-h-72"
+        />
         {heroImageCredit && (
           <p class="text-xs text-neutral-400 mt-2 text-right">
             image by{' '}
