@@ -8,7 +8,7 @@ interface Props {
 }
 
 const { project } = Astro.props;
-const { title, description, tags, github, date, heroImage, heroImageCredit, heroImageCreditUrl } = project.data;
+const { title, description, tags, github, date, heroImage, heroImageCredit } = project.data;
 
 const formattedDate = date.toLocaleDateString('en-US', {
   year: 'numeric',
@@ -20,16 +20,22 @@ const formattedDate = date.toLocaleDateString('en-US', {
 
 <div class="group block border border-neutral-200 dark:border-neutral-800 rounded-xl overflow-hidden hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors">
   <a href={`/projects/${project.id}`}>
-      {heroImage && (
-        <div class="relative">
-          <Image src={heroImage} alt={title} width={600} quality={75} class="w-full h-48 object-cover" />
-          {heroImageCredit && (
-            <span class="absolute bottom-1.5 right-2 text-[10px] text-white/60">
-              © {heroImageCredit}
-            </span>
-          )}
-        </div>
-      )}
+    {heroImage && (
+      <div class="relative">
+        <Image
+          src={heroImage}
+          alt={title}
+          width={600}
+          quality={75}
+          class="w-full h-48 object-cover"
+        />
+        {heroImageCredit && (
+          <span class="absolute bottom-1.5 right-2 text-[10px] text-white/60">
+            © {heroImageCredit}
+          </span>
+        )}
+      </div>
+    )}
     <div class="p-5">
       <div class="flex items-center justify-between mb-2">
         <h2 class="font-medium text-lg">{title}</h2>
@@ -52,7 +58,7 @@ const formattedDate = date.toLocaleDateString('en-US', {
         target="_blank"
         rel="noopener noreferrer"
         class="inline-flex items-center gap-2 text-sm text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
-       >
+      >
         <Icon name="lucide:github" class="size-4" />
         source
       </a>
