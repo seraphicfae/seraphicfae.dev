@@ -1,5 +1,5 @@
 {
-	"name": "seraphicfae.dev",
+	"name": "yourproject",
 	"type": "module",
 	"version": "0.0.1",
 	"engines": {
@@ -11,23 +11,29 @@
 		"preview": "astro preview",
 		"astro": "astro",
 		"format": "prettier --write .",
-		"format:check": "prettier --check ."
+		"format:check": "prettier --check .",
+		"prepare": "husky"
+	},
+	"lint-staged": {
+		"*.{js,ts,mjs,astro,css,json,md}": "prettier --write"
 	},
 	"dependencies": {
 		"@astrojs/mdx": "^5.0.3",
 		"@astrojs/sitemap": "^3.7.2",
 		"@fontsource-variable/inter": "^5.2.8",
-		"@iconify-json/lucide": "^1.2.100",
-		"@iconify-json/simple-icons": "^1.2.75",
 		"@tailwindcss/typography": "^0.5.19",
 		"@tailwindcss/vite": "^4.2.2",
 		"astro": "^6.1.1",
 		"astro-icon": "^1.1.5",
-		"sharp": "^0.34.5",
 		"tailwindcss": "^4.2.2"
 	},
 	"devDependencies": {
+		"@iconify-json/lucide": "^1.2.100",
+		"@iconify-json/simple-icons": "^1.2.75",
+		"husky": "^9.1.7",
+		"lint-staged": "^16.4.0",
 		"prettier": "^3.8.1",
-		"prettier-plugin-astro": "^0.14.1"
+		"prettier-plugin-astro": "^0.14.1",
+		"sharp": "^0.34.5"
 	}
 }
