@@ -1,19 +1,19 @@
 ---
-import { getCollection } from 'astro:content';
-import Layout from '../../layouts/Layout.astro';
-import ProjectCard from '../../components/ProjectCard.astro';
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
 
-const projects = await getCollection('projects');
-const sorted = projects.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const projects = await getCollection("projects");
+const sorted = projects.sort(
+	(a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
 ---
 
 <Layout title="Projects">
-  <main class="max-w-4xl mx-auto px-6 py-16">
-    <h1 class="text-3xl font-medium mb-10">Projects</h1>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {sorted.map((project) => (
-        <ProjectCard project={project} />
-      ))}
-    </div>
-  </main>
+	<main class="max-w-4xl mx-auto px-6 py-16">
+		<h1 class="text-3xl font-medium mb-10">Projects</h1>
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+			{sorted.map((project) => <ProjectCard project={project} />)}
+		</div>
+	</main>
 </Layout>

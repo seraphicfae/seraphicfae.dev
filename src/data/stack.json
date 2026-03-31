@@ -1,44 +1,44 @@
 [
-  {
-    "name": "Arch Linux",
-    "icon": "simple-icons:archlinux",
-    "url": "https://archlinux.org",
-    "color": "#1793D1"
-  },
-  {
-    "name": "Astro",
-    "icon": "simple-icons:astro",
-    "url": "https://astro.build",
-    "color": "#FF5D01"
-  },
-  {
-    "name": "Tailwind CSS",
-    "icon": "simple-icons:tailwindcss",
-    "url": "https://tailwindcss.com",
-    "color": "#06B6D4"
-  },
-  {
-    "name": "Docker",
-    "icon": "simple-icons:docker",
-    "url": "https://docker.com",
-    "color": "#2496ED"
-  },
-  {
-    "name": "TypeScript",
-    "icon": "simple-icons:typescript",
-    "url": "https://typescriptlang.org",
-    "color": "#3178C6"
-  },
-  {
-    "name": "Git",
-    "icon": "simple-icons:git",
-    "url": "https://git-scm.com/",
-    "color": "#F1502F"
-  },
-  {
-    "name": "NodeJS",
-    "icon": "simple-icons:nodedotjs",
-    "url": "https://nodejs.org",
-    "color": "#68a063"
-  }
+	{
+		"name": "Arch Linux",
+		"icon": "simple-icons:archlinux",
+		"url": "https://archlinux.org",
+		"color": "#1793D1"
+	},
+	{
+		"name": "Astro",
+		"icon": "simple-icons:astro",
+		"url": "https://astro.build",
+		"color": "#FF5D01"
+	},
+	{
+		"name": "Tailwind CSS",
+		"icon": "simple-icons:tailwindcss",
+		"url": "https://tailwindcss.com",
+		"color": "#06B6D4"
+	},
+	{
+		"name": "Docker",
+		"icon": "simple-icons:docker",
+		"url": "https://docker.com",
+		"color": "#2496ED"
+	},
+	{
+		"name": "TypeScript",
+		"icon": "simple-icons:typescript",
+		"url": "https://typescriptlang.org",
+		"color": "#3178C6"
+	},
+	{
+		"name": "Git",
+		"icon": "simple-icons:git",
+		"url": "https://git-scm.com/",
+		"color": "#F1502F"
+	},
+	{
+		"name": "NodeJS",
+		"icon": "simple-icons:nodedotjs",
+		"url": "https://nodejs.org",
+		"color": "#68a063"
+	}
 ]
