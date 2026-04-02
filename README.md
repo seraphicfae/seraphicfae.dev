@@ -1,6 +1,8 @@
-# How to setup
+## [My website](https://seraphicfae.dev)
 
-```bash
+## Getting started
+
+```sh
 git clone https://github.com/seraphicfae/seraphicfae.dev
 cd seraphicfae.dev
 pnpm install
