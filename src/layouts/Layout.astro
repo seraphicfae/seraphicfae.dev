@@ -13,7 +13,7 @@ interface Props {
 const {
 	title,
 	description = "The cutest personal website.",
-	image = "/embed.jpg",
+	image = "/og.jpg",
 } = Astro.props;
 
 const pageTitle = title === "seraphicfae" ? title : `${title}`;
@@ -26,30 +26,20 @@ const socialImage = new URL(image, Astro.site);
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-
+		<title>{pageTitle}</title>
 		<link rel="preconnect" href="https://cdn.discordapp.com" />
 		<link rel="dns-prefetch" href="https://cdn.discordapp.com" />
 		<link rel="preconnect" href="https://avatars.githubusercontent.com" />
-
-		<meta name="description" content={description} />
-		<title>{pageTitle}</title>
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<link rel="sitemap" href="/sitemap-index.xml" />
 		<link rel="canonical" href={canonicalURL} />
+		<meta name="description" content={description} />
 		<meta name="generator" content={Astro.generator} />
-
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="sitemap" href="/sitemap-index.xml" />
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={canonicalURL} />
 		<meta property="og:title" content={pageTitle} />
 		<meta property="og:description" content={description} />
 		<meta property="og:image" content={socialImage} />
-
-		<meta name="twitter:card" content="summary" />
-		<meta name="twitter:title" content={pageTitle} />
-		<meta name="twitter:description" content={description} />
-		<meta name="twitter:image" content={socialImage} />
-
 		<ClientRouter />
 	</head>
 	<body
