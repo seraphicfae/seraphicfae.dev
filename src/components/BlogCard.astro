@@ -1,0 +1,45 @@
+---
+import type { CollectionEntry } from "astro:content";
+interface Props {
+	post: CollectionEntry<"blog">;
+}
+const { post } = Astro.props;
+const { title, description, tags, date } = post.data;
+const formattedDate = date.toLocaleDateString("en-US", {
+	year: "numeric",
+	month: "long",
+	day: "numeric",
+	timeZone: "UTC",
+});
+---
+
+<a
+	href={`/blog/${post.id}`}
+	class="group block border border-neutral-200 dark:border-neutral-800 rounded-xl overflow-hidden hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors"
+>
+	<div class="p-5">
+		<div class="flex items-center justify-between mb-2">
+			<h2 class="font-medium text-lg">{title}</h2>
+			<time
+				class="text-xs text-neutral-400 shrink-0 ml-4"
+				datetime={date.toISOString()}
+			>
+				{formattedDate}
+			</time>
+		</div>
+		<p class="text-sm text-neutral-500 dark:text-neutral-400 mb-4">
+			{description}
+		</p>
+		{
+			tags && (
+				<div class="flex flex-wrap gap-2">
+					{tags.map((tag) => (
+						<span class="text-xs px-2 py-1 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400">
+							{tag}
+						</span>
+					))}
+				</div>
+			)
+		}
+	</div>
+</a>

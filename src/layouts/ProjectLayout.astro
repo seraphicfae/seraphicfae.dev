@@ -1,0 +1,97 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import Layout from "./Layout.astro";
+
+interface Props {
+	title: string;
+	description: string;
+	date: Date;
+	heroImage?: ImageMetadata;
+	heroImageCredit?: string;
+	heroImageCreditUrl?: string;
+	github?: string;
+	ogImage?: string;
+}
+
+const {
+	title,
+	description,
+	date,
+	heroImage,
+	heroImageCredit,
+	heroImageCreditUrl,
+	github,
+	ogImage,
+} = Astro.props;
+
+const formattedDate = date.toLocaleDateString("en-US", {
+	year: "numeric",
+	month: "long",
+	day: "numeric",
+	timeZone: "UTC",
+});
+---
+
+<Layout title={title} description={description} image={ogImage}>
+	<main class="max-w-2xl mx-auto px-6 py-16">
+		<a
+			href="/projects"
+			class="text-sm text-neutral-500 hover:text-neutral-800 dark:hover:text-neutral-200 transition-colors mb-8 inline-block"
+			>← Projects</a
+		>
+
+		{
+			heroImage && (
+				<div class="mb-8">
+					<Image
+						src={heroImage}
+						alt={title}
+						width={800}
+						quality={80}
+						class="w-full rounded-xl object-cover max-h-72"
+					/>
+					{heroImageCredit && (
+						<p class="text-xs text-neutral-400 mt-2 text-right">
+							image by{" "}
+							{heroImageCreditUrl ? (
+								<a
+									href={heroImageCreditUrl}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="underline hover:text-neutral-600 dark:hover:text-neutral-200 transition-colors"
+								>
+									{heroImageCredit}
+								</a>
+							) : (
+								heroImageCredit
+							)}
+						</p>
+					)}
+				</div>
+			)
+		}
+
+		<h1 class="text-3xl font-medium mb-2">{title}</h1>
+		<div class="flex items-center gap-4 mb-10">
+			<time class="text-sm text-neutral-400">{formattedDate}</time>
+			{
+				github && (
+					<a
+						href={github}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="inline-flex items-center gap-1.5 text-sm text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+					>
+						<Icon name="lucide:github" class="size-4" />
+						source
+					</a>
+				)
+			}
+		</div>
+
+		<article class="prose prose-neutral dark:prose-invert max-w-none">
+			<slot />
+		</article>
+	</main>
+</Layout>
