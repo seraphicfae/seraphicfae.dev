@@ -52,5 +52,11 @@
 		"icon": "simple-icons:github",
 		"url": "https://github.com",
 		"color": "#6cc644"
+	},
+	{
+		"name": "Bash",
+		"icon": "simple-icons:gnubash",
+		"url": "https://www.gnu.org/software/bash/",
+		"color": "#293137"
 	}
 ]
