@@ -1,15 +1,17 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import ProseCard from "../components/ProseCard.astro";
+interface Props {
+	class?: string;
+}
 ---
 
 <Layout title="404" description="Page not found">
-	<ProseCard>
+	<div class="prose dark:prose-invert max-w-2xl mx-auto w-full px-6 py-12">
 		<h1>404 — Page not found</h1>
 		<img
 			src="https://http.cat/404"
-			alt="A picture that says '404' with a silly cat"
+			alt="404 caption with a cat hiding"
 			class="mx-auto my-6 rounded-lg"
 		/>
-	</ProseCard>
+	</div>
 </Layout>
