@@ -2,7 +2,6 @@
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import Layout from "./Layout.astro";
-
 interface Props {
 	title: string;
 	description: string;
@@ -13,7 +12,6 @@ interface Props {
 	github?: string;
 	ogImage?: string;
 }
-
 const {
 	title,
 	description,
@@ -24,7 +22,6 @@ const {
 	github,
 	ogImage,
 } = Astro.props;
-
 const formattedDate = date.toLocaleDateString("en-US", {
 	year: "numeric",
 	month: "long",
@@ -40,7 +37,6 @@ const formattedDate = date.toLocaleDateString("en-US", {
 			class="text-sm text-neutral-500 hover:text-neutral-800 dark:hover:text-neutral-200 transition-colors mb-8 inline-block"
 			>← Projects</a
 		>
-
 		{
 			heroImage && (
 				<div class="mb-8">
@@ -71,10 +67,11 @@ const formattedDate = date.toLocaleDateString("en-US", {
 				</div>
 			)
 		}
-
 		<h1 class="text-3xl font-medium mb-2">{title}</h1>
 		<div class="flex items-center gap-4 mb-10">
-			<time class="text-sm text-neutral-400">{formattedDate}</time>
+			<time class="text-sm text-neutral-400" datetime={date.toISOString()}
+				>{formattedDate}</time
+			>
 			{
 				github && (
 					<a
@@ -89,7 +86,6 @@ const formattedDate = date.toLocaleDateString("en-US", {
 				)
 			}
 		</div>
-
 		<article class="prose prose-neutral dark:prose-invert max-w-none">
 			<slot />
 		</article>
