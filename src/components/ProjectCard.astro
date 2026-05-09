@@ -54,7 +54,7 @@ const formattedDate = date.toLocaleDateString("en-US", {
 			{
 				tags && (
 					<div class="flex flex-wrap gap-2 mb-4">
-						{tags.map((tag) => (
+						{tags.map((tag: string) => (
 							<span class="text-xs px-2 py-1 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400">
 								{tag}
 							</span>
