@@ -1,12 +1,14 @@
 ---
+import { Icon } from "astro-icon/components";
 import Layout from "./Layout.astro";
 interface Props {
 	title: string;
 	description: string;
 	date: Date;
 	tags?: string[];
+	readTime?: string;
 }
-const { title, description, date, tags } = Astro.props;
+const { title, description, date, tags, readTime } = Astro.props;
 const formattedDate = date.toLocaleDateString("en-US", {
 	year: "numeric",
 	month: "long",
@@ -23,10 +25,12 @@ const formattedDate = date.toLocaleDateString("en-US", {
 			>← Blog</a
 		>
 		<h1 class="text-3xl font-medium mb-2">{title}</h1>
-		<div class="flex items-center gap-4 mb-6">
+		<div class="flex items-center gap-2 mb-6">
 			<time class="text-sm text-neutral-400" datetime={date.toISOString()}
 				>{formattedDate}</time
 			>
+			<Icon name="lucide:dot" />
+			<span class="text-sm text-neutral-400">{readTime}</span>
 		</div>
 		{
 			tags && (
