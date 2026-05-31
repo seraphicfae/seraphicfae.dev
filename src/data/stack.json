@@ -1,0 +1,80 @@
+[
+	{
+		"name": "Arch Linux",
+		"icon": "simple-icons:archlinux",
+		"url": "https://archlinux.org",
+		"color": "#1793D1"
+	},
+	{
+		"name": "Astro",
+		"icon": "simple-icons:astro",
+		"url": "https://astro.build",
+		"color": "#BC52EE"
+	},
+	{
+		"name": "GNU Bash",
+		"icon": "simple-icons:gnubash",
+		"url": "https://www.gnu.org/software/bash/",
+		"color": "#4EAA25"
+	},
+	{
+		"name": "Cloudflare",
+		"icon": "simple-icons:cloudflare",
+		"url": "https://cloudflare.com",
+		"color": "#F38020"
+	},
+	{
+		"name": "Docker",
+		"icon": "simple-icons:docker",
+		"url": "https://docker.com",
+		"color": "#2496ED"
+	},
+	{
+		"name": "Git",
+		"icon": "simple-icons:git",
+		"url": "https://git-scm.com/",
+		"color": "#F03C2E"
+	},
+	{
+		"name": "GitHub",
+		"icon": "simple-icons:github",
+		"url": "https://github.com",
+		"color": "#6CC644"
+	},
+	{
+		"name": "Helix",
+		"icon": "simple-icons:helix",
+		"url": "https://helix-editor.com",
+		"color": "#281733"
+	},
+	{
+		"name": "niri",
+		"icon": "simple-icons:niri",
+		"url": "https://niri-wm.github.io/",
+		"color": "#D55C44"
+	},
+	{
+		"name": "Node.JS",
+		"icon": "simple-icons:nodedotjs",
+		"url": "https://nodejs.org",
+		"color": "#5FA04E"
+	},
+	{
+		"name": "Tailwind CSS",
+		"icon": "simple-icons:tailwindcss",
+		"url": "https://tailwindcss.com",
+		"color": "#06B6D4"
+	},
+	{
+		"name": "TypeScript",
+		"icon": "simple-icons:typescript",
+		"url": "https://typescriptlang.org",
+		"color": "#3178C6"
+	},
+	{
+		"name": "Zed",
+		"icon": "simple-icons:zedindustries",
+		"url": "https://zed.dev/",
+		"color": "#084CCF"
+	}
+]

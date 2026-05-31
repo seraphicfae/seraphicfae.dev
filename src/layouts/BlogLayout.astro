@@ -1,0 +1,38 @@
+---
+import { Icon } from "astro-icon/components";
+import Layout from "./Layout.astro";
+interface Props {
+	title: string;
+	description: string;
+	date: Date;
+	readTime?: string;
+}
+const { title, description, date, readTime } = Astro.props;
+const formattedDate = date.toLocaleDateString("en-US", {
+	year: "numeric",
+	month: "long",
+	day: "numeric",
+	timeZone: "UTC",
+});
+---
+
+<Layout title={title} description={description}>
+	<main class="max-w-2xl mx-auto px-6 py-16">
+		<a
+			href="/blog"
+			class="text-sm text-neutral-500 hover:text-neutral-800 dark:hover:text-neutral-200 transition-colors mb-8 inline-block"
+			>← Blog</a
+		>
+		<h1 class="text-3xl font-medium mb-2">{title}</h1>
+		<div class="flex items-center gap-2 mb-6">
+			<time class="text-sm text-neutral-400" datetime={date.toISOString()}
+				>{formattedDate}</time
+			>
+			<Icon name="lucide:dot" />
+			<span class="text-sm text-neutral-400">{readTime}</span>
+		</div>
+		<article class="prose prose-neutral dark:prose-invert max-w-none">
+			<slot />
+		</article>
+	</main>
+</Layout>

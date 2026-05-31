@@ -1,0 +1,67 @@
+---
+import { Icon } from "astro-icon/components";
+
+const nav = [
+	{
+		label: "/home/meimei",
+		ariaLabel: "Home",
+		href: "/",
+		icon: "lucide:house",
+	},
+	{
+		label: "/bin/projects",
+		ariaLabel: "Projects",
+		href: "/projects",
+		icon: "lucide:git-branch",
+	},
+	{
+		label: "/var/blog",
+		ariaLabel: "Blog",
+		href: "/blog",
+		icon: "lucide:notebook",
+	},
+];
+
+const { pathname } = Astro.url;
+const isCurrent = (href: string) =>
+	href === "/" ? pathname === href : pathname.startsWith(href);
+---
+
+<header
+	class="sticky top-0 z-50 w-full border-b border-neutral-200 dark:border-neutral-800 bg-white/80 dark:bg-neutral-950/80 backdrop-blur-sm"
+>
+	<div class="max-w-4xl mx-auto px-6 h-14 flex items-center justify-between">
+		<img src="/favicon.svg" alt="favicon svg" class="block w-7 h-7" />
+		<nav class="flex items-center gap-1">
+			{
+				nav.map(({ label, ariaLabel, href, icon }) => (
+					<a
+						href={href}
+						aria-label={ariaLabel}
+						aria-current={isCurrent(href) ? "page" : undefined}
+						class:list={[
+							"relative flex items-center gap-1.5 px-3 py-1.5 text-sm transition-colors duration-200",
+							"after:absolute after:bottom-0 after:left-3 after:right-3 after:h-0.5 after:rounded-full after:bg-current",
+							"after:transition-transform after:duration-300 after:origin-center",
+							isCurrent(href)
+								? "text-neutral-900 dark:text-neutral-100 after:scale-x-100"
+								: "text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 after:scale-x-0 hover:after:scale-x-100",
+						]}
+					>
+						{icon && <Icon name={icon} class="size-4" />}
+						<span class="hidden sm:block text-s">{label}</span>
+					</a>
+				))
+			}
+			<a
+				href="https://github.com/seraphicfae/seraphicfae.dev"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="ml-2 p-1.5 text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+				aria-label="GitHub source"
+			>
+				<Icon name="simple-icons:github" class="size-4" />
+			</a>
+		</nav>
+	</div>
+</header>

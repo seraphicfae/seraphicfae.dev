@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://seraphicfae.dev/sitemap-index.xml

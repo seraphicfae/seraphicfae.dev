@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+@font-face {
+	font-family: "Inter Variable";
+	font-style: normal;
+	font-display: swap;
+	font-weight: 100 900;
+	src: url("@fontsource-variable/inter/files/inter-latin-wght-normal.woff2")
+		format("woff2-variations");
+}
+
+@plugin "@tailwindcss/typography";
+
+@theme {
+	--font-sans: "Inter Variable", Inter, system-ui, sans-serif;
+	--text-sm: 1rem;
+	--text-xs: 0.8rem;
+	--text-base: 1.125rem;
+}
+
+@layer base {
+	html {
+		font-family: var(--font-sans);
+		font-feature-settings: "cv11", "ss01";
+		font-size: 18px;
+	}
+}
