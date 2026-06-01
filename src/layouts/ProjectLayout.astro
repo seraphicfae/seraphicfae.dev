@@ -73,9 +73,9 @@ const formattedDate = date.toLocaleDateString("en-US", {
 			<time class="text-sm text-neutral-400" datetime={date.toISOString()}
 				>{formattedDate}</time
 			>
-			<Icon name="lucide:dot" />
 			{
 				github && (
+					<Icon name="lucide:dot" />
 					<a
 						href={github}
 						target="_blank"
