@@ -5,7 +5,7 @@ import { Image } from "astro:assets";
 import friends from "../data/friends.json";
 import stack from "../data/stack.json";
 
-const DISCORD_ID = "1009098164864823441";
+const DISCORD_ID = "291739012";
 
 let reviews = [];
 try {
@@ -43,7 +43,7 @@ try {
 							/>
 						</div>
 						<div class="flex flex-col gap-1">
-							<h1 class="text-2xl font-medium">Mei Mei</h1>
+							<h1 class="text-2xl font-black">Mei Mei</h1>
 							<p class="text-sm text-neutral-500 dark:text-neutral-400">
 								@seraphicfae
 							</p>
@@ -77,11 +77,7 @@ try {
 
 				<!-- about me -->
 				<section class="flex flex-col gap-3">
-					<h2
-						class="text-xs font-medium uppercase tracking-widest text-neutral-500 dark:text-neutral-400"
-					>
-						About me
-					</h2>
+					<h2 class="font-black uppercase tracking-widest">About me</h2>
 					<p
 						class="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed"
 					>
@@ -94,11 +90,7 @@ try {
 
 				<!-- tech stack -->
 				<section class="flex flex-col gap-3">
-					<h2
-						class="text-xs font-medium uppercase tracking-widest text-neutral-500 dark:text-neutral-400"
-					>
-						Stack & tools
-					</h2>
+					<h2 class="font-black uppercase tracking-widest">Stack & tools</h2>
 					<div class="flex flex-wrap gap-2">
 						{
 							stack.map((item) => (
@@ -127,11 +119,7 @@ try {
 			<div class="flex flex-col gap-12">
 				<!-- friends -->
 				<section class="flex flex-col gap-3">
-					<h2
-						class="text-xs font-medium uppercase tracking-widest text-neutral-500 dark:text-neutral-400"
-					>
-						Friends
-					</h2>
+					<h2 class="font-black uppercase tracking-widest">Friends</h2>
 					<div class="flex flex-wrap gap-3">
 						{
 							friends.map((friend) => (
@@ -162,15 +150,11 @@ try {
 
 				<!-- reviewdb -->
 				<section class="flex flex-col gap-3">
-					<h2
-						class="text-xs font-medium uppercase tracking-widest text-neutral-500 dark:text-neutral-400"
-					>
-						ReviewDB
-					</h2>
+					<h2 class="font-black uppercase tracking-widest">ReviewDB</h2>
 					{
 						reviews.length === 0 ? (
 							<p class="text-sm text-neutral-500 dark:text-neutral-400">
-								No reviews yet
+								Nothing to see here
 							</p>
 						) : (
 							<div class="flex flex-col gap-3">
