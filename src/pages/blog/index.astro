@@ -12,9 +12,9 @@ const sorted = posts.sort(
 	title="Blog"
 	description="Thoughts on web development, Linux, and tinkering"
 >
-	<main class="max-w-4xl mx-auto px-6 py-16">
-		<h1 class="text-3xl font-black mb-10">Blog</h1>
-		<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+	<main class="mx-auto max-w-4xl px-6 py-16">
+		<h1 class="mb-10 text-3xl font-black">Blog</h1>
+		<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
 			{sorted.map((post) => <BlogCard post={post} />)}
 		</div>
 	</main>

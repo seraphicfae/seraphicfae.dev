@@ -28,10 +28,10 @@ const isCurrent = (href: string) =>
 ---
 
 <header
-	class="sticky top-0 z-50 w-full border-b border-neutral-200 dark:border-neutral-800 bg-white/80 dark:bg-neutral-950/80 backdrop-blur-sm"
+	class="sticky top-0 z-50 w-full border-b border-neutral-200 bg-white/80 backdrop-blur-sm dark:border-neutral-800 dark:bg-neutral-950/80"
 >
-	<div class="max-w-4xl mx-auto px-6 h-14 flex items-center justify-between">
-		<img src="/favicon.svg" alt="favicon svg" class="block w-7 h-7" />
+	<div class="mx-auto flex h-14 max-w-4xl items-center justify-between px-6">
+		<img src="/favicon.svg" alt="favicon svg" class="block h-7 w-7" />
 		<nav class="flex items-center gap-1">
 			{
 				nav.map(({ label, ariaLabel, href, icon }) => (
@@ -41,15 +41,15 @@ const isCurrent = (href: string) =>
 						aria-current={isCurrent(href) ? "page" : undefined}
 						class:list={[
 							"relative flex items-center gap-1.5 px-3 py-1.5 text-sm transition-colors duration-200",
-							"after:absolute after:bottom-0 after:left-3 after:right-3 after:h-0.5 after:rounded-full after:bg-current",
-							"after:transition-transform after:duration-300 after:origin-center",
+							"after:absolute after:right-3 after:bottom-0 after:left-3 after:h-0.5 after:rounded-full after:bg-current",
+							"after:origin-center after:transition-transform after:duration-300",
 							isCurrent(href)
-								? "text-neutral-900 dark:text-neutral-100 after:scale-x-100"
-								: "text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 after:scale-x-0 hover:after:scale-x-100",
+								? "text-neutral-900 after:scale-x-100 dark:text-neutral-100"
+								: "text-neutral-500 after:scale-x-0 hover:text-neutral-900 hover:after:scale-x-100 dark:text-neutral-400 dark:hover:text-neutral-100",
 						]}
 					>
 						{icon && <Icon name={icon} class="size-4" />}
-						<span class="hidden sm:block text-s">{label}</span>
+						<span class="text-s hidden sm:block">{label}</span>
 					</a>
 				))
 			}

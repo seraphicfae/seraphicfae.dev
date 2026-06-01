@@ -26,8 +26,8 @@ try {
 	title="Home"
 	description="About me, tech stack, friends, and reviews all found here!"
 >
-	<div class="max-w-5xl mx-auto px-6 py-16">
-		<div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
+	<div class="mx-auto max-w-5xl px-6 py-16">
+		<div class="grid grid-cols-1 gap-x-16 gap-y-12 md:grid-cols-2">
 			<!-- LEFT COLUMN -->
 			<div class="flex flex-col gap-12">
 				<!-- profile -->
@@ -39,7 +39,7 @@ try {
 								alt="seraphicfae"
 								width={96}
 								height={96}
-								class="w-24 h-24 rounded-4xl object-cover"
+								class="h-24 w-24 rounded-4xl object-cover"
 							/>
 						</div>
 						<div class="flex flex-col gap-1">
@@ -77,9 +77,9 @@ try {
 
 				<!-- about me -->
 				<section class="flex flex-col gap-3">
-					<h2 class="font-black uppercase tracking-widest">About me</h2>
+					<h2 class="font-black tracking-widest uppercase">About me</h2>
 					<p
-						class="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed"
+						class="text-sm leading-relaxed text-neutral-600 dark:text-neutral-300"
 					>
 						Junior front-end web developer with an interest in Docker, Linux,
 						and reproducible builds. Obsessing over standards in Linux such as
@@ -90,7 +90,7 @@ try {
 
 				<!-- tech stack -->
 				<section class="flex flex-col gap-3">
-					<h2 class="font-black uppercase tracking-widest">Stack & tools</h2>
+					<h2 class="font-black tracking-widest uppercase">Stack & tools</h2>
 					<div class="flex flex-wrap gap-2">
 						{
 							stack.map((item) => (
@@ -99,13 +99,13 @@ try {
 									target="_blank"
 									rel="noopener noreferrer"
 									style={`--brand: ${item.color}`}
-									class="group flex items-center gap-2 px-3 py-1.5 rounded-lg border border-neutral-200 dark:border-neutral-800 transition-all duration-200 hover:border-neutral-400 dark:hover:border-(--brand)"
+									class="group flex items-center gap-2 rounded-lg border border-neutral-200 px-3 py-1.5 transition-all duration-200 hover:border-neutral-400 dark:border-neutral-800 dark:hover:border-(--brand)"
 								>
 									<Icon
 										name={item.icon}
-										class="size-4 text-neutral-500 dark:text-neutral-400 transition-colors duration-200 group-hover:text-(--brand)"
+										class="size-4 text-neutral-500 transition-colors duration-200 group-hover:text-(--brand) dark:text-neutral-400"
 									/>
-									<span class="text-sm text-neutral-500 dark:text-neutral-400 transition-colors duration-200 group-hover:text-(--brand)">
+									<span class="text-sm text-neutral-500 transition-colors duration-200 group-hover:text-(--brand) dark:text-neutral-400">
 										{item.name}
 									</span>
 								</a>
@@ -119,7 +119,7 @@ try {
 			<div class="flex flex-col gap-12">
 				<!-- friends -->
 				<section class="flex flex-col gap-3">
-					<h2 class="font-black uppercase tracking-widest">Friends</h2>
+					<h2 class="font-black tracking-widest uppercase">Friends</h2>
 					<div class="flex flex-wrap gap-3">
 						{
 							friends.map((friend) => (
@@ -137,9 +137,9 @@ try {
 										height={40}
 										loading="lazy"
 										decoding="async"
-										class="w-10 h-10 rounded-[14px] object-cover ring-2 ring-transparent group-hover:ring-neutral-300 dark:group-hover:ring-neutral-600 transition-all"
+										class="h-10 w-10 rounded-[14px] object-cover ring-2 ring-transparent transition-all group-hover:ring-neutral-300 dark:group-hover:ring-neutral-600"
 									/>
-									<span class="absolute -top-8 left-1/2 -translate-x-1/2 bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+									<span class="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 rounded bg-neutral-900 px-2 py-1 text-xs whitespace-nowrap text-white opacity-0 transition-opacity group-hover:opacity-100 dark:bg-neutral-100 dark:text-neutral-900">
 										{friend.name}
 									</span>
 								</a>
@@ -150,7 +150,7 @@ try {
 
 				<!-- reviewdb -->
 				<section class="flex flex-col gap-3">
-					<h2 class="font-black uppercase tracking-widest">ReviewDB</h2>
+					<h2 class="font-black tracking-widest uppercase">ReviewDB</h2>
 					{
 						reviews.length === 0 ? (
 							<p class="text-sm text-neutral-500 dark:text-neutral-400">
@@ -159,7 +159,7 @@ try {
 						) : (
 							<div class="flex flex-col gap-3">
 								{reviews.slice(0, 5).map((review: any) => (
-									<div class="flex gap-3 items-start">
+									<div class="flex items-start gap-3">
 										<img
 											src={review.sender.profilePhoto}
 											alt={review.sender.username}
@@ -167,7 +167,7 @@ try {
 											height={32}
 											loading="lazy"
 											decoding="async"
-											class="w-8 h-8 rounded-[10px] object-cover shrink-0"
+											class="h-8 w-8 shrink-0 rounded-[10px] object-cover"
 										/>
 										<div class="flex flex-col gap-0.5">
 											<span class="text-xs font-medium text-neutral-600 dark:text-neutral-300">
