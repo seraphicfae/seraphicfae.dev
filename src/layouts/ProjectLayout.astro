@@ -68,10 +68,12 @@ const formattedDate = date.toLocaleDateString("en-US", {
 			)
 		}
 		<h1 class="text-3xl font-medium mb-2">{title}</h1>
-		<div class="flex items-center gap-4 mb-10">
+		<h2 class="mb-4">{description}</h2>
+		<div class="flex items-center gap-2 mb-10">
 			<time class="text-sm text-neutral-400" datetime={date.toISOString()}
 				>{formattedDate}</time
 			>
+			<Icon name="lucide:dot" />
 			{
 				github && (
 					<a
