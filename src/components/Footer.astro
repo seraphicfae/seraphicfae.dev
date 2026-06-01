@@ -3,10 +3,24 @@ import { Icon } from "astro-icon/components";
 ---
 
 <footer class="border-t border-neutral-200 dark:border-neutral-800 mt-auto">
-	<div class="max-w-4xl mx-auto px-6 h-14 flex items-center gap-2">
-		Psst, you're cute
-		<a href="https://www.oracle.com/erp/" target="_blank" aria-label="heart">
+	<div class="max-w-4xl mx-auto px-6 h-14 flex items-center justify-between">
+		<a
+			href="https://www.oracle.com/erp/"
+			target="_blank"
+			aria-label="heart"
+			class="flex items-center justify-center gap-2"
+		>
+			Psst, you're cute
 			<Icon name="lucide:heart" />
+		</a>
+		<a
+			href="https://github.com/seraphicfae/seraphicfae.dev"
+			target="_blank"
+			rel="noopener noreferrer"
+			class="text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+			aria-label="GitHub source"
+		>
+			<Icon name="simple-icons:github" class="size-6" />
 		</a>
 	</div>
 </footer>
