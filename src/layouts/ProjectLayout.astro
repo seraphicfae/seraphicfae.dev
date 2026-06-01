@@ -2,6 +2,8 @@
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import Layout from "./Layout.astro";
+import FormattedDate from "../components/FormattedDate.astro";
+
 interface Props {
 	title: string;
 	description: string;
@@ -12,6 +14,7 @@ interface Props {
 	github?: string;
 	ogImage?: string;
 }
+
 const {
 	title,
 	description,
@@ -22,12 +25,6 @@ const {
 	github,
 	ogImage,
 } = Astro.props;
-const formattedDate = date.toLocaleDateString("en-US", {
-	year: "numeric",
-	month: "long",
-	day: "numeric",
-	timeZone: "UTC",
-});
 ---
 
 <Layout title={title} description={description} image={ogImage}>
@@ -70,9 +67,7 @@ const formattedDate = date.toLocaleDateString("en-US", {
 		<h1 class="mb-2 text-3xl font-medium">{title}</h1>
 		<h2 class="mb-2">{description}</h2>
 		<div class="mb-10 flex items-center gap-2">
-			<time class="text-sm text-neutral-400" datetime={date.toISOString()}
-				>{formattedDate}</time
-			>
+		<FormattedDate date={date} />
 			{
 				github && (
 					<Icon name="lucide:dot" />

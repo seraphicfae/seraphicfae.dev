@@ -1,16 +1,13 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import FormattedDate from "../components/FormattedDate.astro";
+
 interface Props {
 	post: CollectionEntry<"blog">;
 }
+
 const { post } = Astro.props;
 const { title, description, date } = post.data;
-const formattedDate = date.toLocaleDateString("en-US", {
-	year: "numeric",
-	month: "long",
-	day: "numeric",
-	timeZone: "UTC",
-});
 ---
 
 <a
@@ -20,12 +17,7 @@ const formattedDate = date.toLocaleDateString("en-US", {
 	<div class="p-5">
 		<div class="mb-2 flex items-center justify-between">
 			<h2 class="text-lg font-medium">{title}</h2>
-			<time
-				class="ml-4 shrink-0 text-xs text-neutral-400"
-				datetime={date.toISOString()}
-			>
-				{formattedDate}
-			</time>
+			<FormattedDate date={date} />
 		</div>
 		<p class="mb-4 text-sm text-neutral-500 dark:text-neutral-400">
 			{description}

@@ -1,19 +1,16 @@
 ---
 import { Icon } from "astro-icon/components";
 import Layout from "./Layout.astro";
+import FormattedDate from "../components/FormattedDate.astro";
+
 interface Props {
 	title: string;
 	description: string;
 	date: Date;
 	readTime?: string;
 }
+
 const { title, description, date, readTime } = Astro.props;
-const formattedDate = date.toLocaleDateString("en-US", {
-	year: "numeric",
-	month: "long",
-	day: "numeric",
-	timeZone: "UTC",
-});
 ---
 
 <Layout title={title} description={description}>
@@ -26,9 +23,7 @@ const formattedDate = date.toLocaleDateString("en-US", {
 		<h1 class="mb-2 text-3xl font-medium">{title}</h1>
 		<h2 class="mb-2">{description}</h2>
 		<div class="mb-10 flex items-center gap-2">
-			<time class="text-sm text-neutral-400" datetime={date.toISOString()}
-				>{formattedDate}</time
-			>
+			<FormattedDate date={date} />
 			<Icon name="lucide:dot" />
 			<span class="text-sm text-neutral-400">{readTime}</span>
 		</div>
