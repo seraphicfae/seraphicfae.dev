@@ -67,19 +67,21 @@ const {
 		<h1 class="mb-2 text-3xl font-medium">{title}</h1>
 		<h2 class="mb-2">{description}</h2>
 		<div class="mb-10 flex items-center gap-2">
-		<FormattedDate date={date} />
+			<FormattedDate date={date} />
 			{
 				github && (
-					<Icon name="lucide:dot" />
-					<a
-						href={github}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="inline-flex items-center gap-1.5 text-sm text-neutral-400 transition-colors hover:text-neutral-900 dark:hover:text-neutral-100"
-					>
-						<Icon name="simple-icons:github" class="size-4" />
-						source
-					</a>
+					<>
+						<Icon name="lucide:dot" />
+						<a
+							href={github}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="inline-flex items-center gap-1.5 text-sm text-neutral-400 transition-colors hover:text-neutral-900 dark:hover:text-neutral-100"
+						>
+							<Icon name="simple-icons:github" class="size-4" />
+							source
+						</a>
+					</>
 				)
 			}
 		</div>
