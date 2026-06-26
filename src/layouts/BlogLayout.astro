@@ -24,8 +24,10 @@ const { title, description, date, readTime } = Astro.props;
 		<h2 class="mb-2">{description}</h2>
 		<div class="mb-10 flex items-center gap-2">
 			<FormattedDate date={date} />
-			<Icon name="lucide:dot" />
-			<span class="text-sm text-neutral-400">{readTime}</span>
+			<div class="flex items-center gap-1.5">
+				<Icon name="lucide:clock" class="size-3.5 shrink-0 text-neutral-400" />
+				<span class="text-sm text-neutral-400">{readTime}</span>
+			</div>
 		</div>
 		<article class="prose prose-neutral dark:prose-invert max-w-none">
 			<slot />

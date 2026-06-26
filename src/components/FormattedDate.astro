@@ -2,17 +2,20 @@
 interface Props {
 	date: Date;
 }
-
+import { Icon } from "astro-icon/components";
 const { date } = Astro.props;
 ---
 
-<time class="text-sm text-neutral-400" datetime={date.toISOString()}>
-	{
-		date.toLocaleDateString("en-us", {
-			year: "numeric",
-			month: "short",
-			day: "numeric",
-			timeZone: "UTC",
-		})
-	}
-</time>
+<div class="flex items-center gap-1.5">
+	<Icon name="lucide:calendar" class="size-3.5 shrink-0 text-neutral-400" />
+	<time class="text-sm text-neutral-400" datetime={date.toISOString()}>
+		{
+			date.toLocaleDateString("en-us", {
+				year: "numeric",
+				month: "short",
+				day: "numeric",
+				timeZone: "UTC",
+			})
+		}
+	</time>
+</div>
