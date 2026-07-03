@@ -1,0 +1,32 @@
+---
+import stack from "../data/stack.json";
+import { Icon } from "astro-icon/components";
+---
+
+<section class="flex flex-col gap-3">
+	<div class="flex items-center gap-2">
+		<Icon name="lucide:code-xml" class="size-4 shrink-0" />
+		<h2 class="font-black tracking-widest uppercase">stack & tools</h2>
+	</div>
+	<div class="flex flex-wrap gap-2">
+		{
+			stack.map((item) => (
+				<a
+					href={item.url}
+					target="_blank"
+					rel="noopener noreferrer"
+					style={`--brand: ${item.color}`}
+					class="group flex items-center gap-2 rounded-lg border border-neutral-200 px-3 py-1.5 transition-all duration-200 hover:border-transparent hover:bg-(--brand) dark:border-neutral-800"
+				>
+					<Icon
+						name={item.icon}
+						class="size-4 text-neutral-500 transition-colors duration-200 group-hover:text-white dark:text-neutral-400"
+					/>
+					<span class="text-neutral-500 transition-colors duration-200 group-hover:text-white dark:text-neutral-400">
+						{item.name}
+					</span>
+				</a>
+			))
+		}
+	</div>
+</section>

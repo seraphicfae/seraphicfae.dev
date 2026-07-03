@@ -1,0 +1,45 @@
+---
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+---
+
+<section class="flex flex-col gap-6">
+	<div class="flex items-center gap-6">
+		<div class="relative shrink-0">
+			<Image
+				src="https://avatars.githubusercontent.com/u/171467756"
+				alt="seraphicfae"
+				loading="eager"
+				width={96}
+				height={96}
+				class="h-24 w-24 rounded-4xl object-cover"
+			/>
+		</div>
+		<div class="flex flex-col gap-1">
+			<h1 class="text-2xl font-black">Mei Mei</h1>
+			<p class="text-sm text-neutral-500 dark:text-neutral-400">@seraphicfae</p>
+			<p class="text-xs text-neutral-500 dark:text-neutral-400">she/her</p>
+		</div>
+	</div>
+
+	<div class="flex flex-col gap-2">
+		<div
+			class="flex items-center gap-2 text-sm text-neutral-500 dark:text-neutral-400"
+		>
+			<Icon name="lucide:cake" class="size-4 shrink-0" />
+			<span>Adult</span>
+		</div>
+		<div
+			class="flex items-center gap-2 text-sm text-neutral-500 dark:text-neutral-400"
+		>
+			<Icon name="lucide:map-pin" class="size-4 shrink-0" />
+			<span>North America</span>
+		</div>
+		<div
+			class="flex items-center gap-2 text-sm text-neutral-500 dark:text-neutral-400"
+		>
+			<Icon name="lucide:languages" class="size-4 shrink-0" />
+			<span>EN / ES</span>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,68 @@
+---
+import { Icon } from "astro-icon/components";
+const DISCORD_ID = "1009098164864823441";
+
+let reviews = [];
+try {
+	const res = await fetch(
+		`https://manti.vendicated.dev/api/reviewdb/users/${DISCORD_ID}/reviews?flags=2`,
+	);
+	const data = await res.json();
+	reviews = (data.reviews ?? []).sort(
+		(a: any, b: any) => b.timestamp - a.timestamp,
+	);
+} catch (e) {
+	console.error("mantikafasi pls fix:", e);
+	reviews = [];
+}
+---
+
+<section class="flex flex-col gap-3">
+	<div class="flex items-center gap-2">
+		<Icon name="lucide:message-square-text" class="size-4 shrink-0" />
+		<h2 class="font-black tracking-widest uppercase">reviewdb</h2>
+	</div>
+	{
+		reviews.length === 0 ? (
+			<p class="text-sm text-neutral-500 dark:text-neutral-400">
+				Nothing to see here
+			</p>
+		) : (
+			<div class="flex flex-col gap-3">
+				{reviews.slice(0, 5).map((review: any) => (
+					<div class="flex items-start gap-3">
+						<img
+							src={review.sender.profilePhoto}
+							alt={review.sender.username}
+							width={32}
+							height={32}
+							loading="lazy"
+							decoding="async"
+							class="h-8 w-8 shrink-0 rounded-[10px] object-cover"
+						/>
+						<div class="min-w-0 flex-1">
+							<div class="flex items-baseline gap-2">
+								<h class="text-xs font-medium text-neutral-600 dark:text-neutral-300">
+									{review.sender.username}
+								</h>
+								<span class="text-xs text-neutral-500 dark:text-neutral-400">
+									{new Date(review.timestamp * 1000).toLocaleDateString()}
+								</span>
+							</div>
+							<p class="text-sm wrap-break-word text-neutral-500 dark:text-neutral-400">
+								{review.comment}
+							</p>
+						</div>
+						{review.score != null && (
+							<div class="flex w-6 shrink-0 flex-col items-center gap-0.5 pt-0.5 text-neutral-400 dark:text-neutral-500">
+								<Icon name="lucide:chevron-up" class="size-3.5" />
+								<span class="text-xs font-medium">{review.score}</span>
+								<Icon name="lucide:chevron-down" class="size-3.5" />
+							</div>
+						)}
+					</div>
+				))}
+			</div>
+		)
+	}
+</section>
