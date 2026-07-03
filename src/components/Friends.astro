@@ -22,11 +22,11 @@ import { Image } from "astro:assets";
 					<Image
 						src={friend.avatar}
 						alt={friend.name}
-						width={40}
-						height={40}
+						width={180}
+						height={180}
 						loading="eager"
 						decoding="async"
-						class="h-10 w-10 rounded-[14px] object-cover ring-2 ring-transparent transition-all group-hover:ring-neutral-300 dark:group-hover:ring-neutral-600"
+						class="h-10 w-10 rounded-xl object-cover ring-2 ring-transparent transition-all group-hover:ring-neutral-300 dark:group-hover:ring-neutral-600"
 					/>
 					<span class="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 rounded bg-neutral-900 px-2 py-1 text-xs whitespace-nowrap text-white opacity-0 transition-opacity group-hover:opacity-100 dark:bg-neutral-100 dark:text-neutral-900">
 						{friend.name}
