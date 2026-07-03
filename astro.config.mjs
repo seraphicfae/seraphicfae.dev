@@ -12,4 +12,17 @@ export default defineConfig({
 		plugins: [tailwindcss()],
 	},
 	integrations: [icon(), mdx(), sitemap()],
+	image: {
+		remotePatterns: [
+			{ protocol: "https", hostname: "avatars.githubusercontent.com" },
+			{
+				protocol: "https",
+				hostname: "omegasunkey.pages.dev",
+			},
+			{
+				protocol: "https",
+				hostname: "cdn.discordapp.com",
+			},
+		],
+	},
 });
