@@ -1,85 +1,27 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
-import { Image } from "astro:assets";
-import friends from "../data/friends.json";
-import stack from "../data/stack.json";
-
-const DISCORD_ID = "1009098164864823441";
-
-let reviews = [];
-try {
-	const res = await fetch(
-		`https://manti.vendicated.dev/api/reviewdb/users/${DISCORD_ID}/reviews?flags=2`,
-	);
-	const data = await res.json();
-	reviews = (data.reviews ?? []).sort(
-		(a: any, b: any) => b.timestamp - a.timestamp,
-	);
-} catch (e) {
-	console.error("mantikafasi pls fix:", e);
-	reviews = [];
-}
+import ReviewDB from "../components/ReviewDB.astro";
+import Friends from "../components/Friends.astro";
+import TechStack from "../components/TechStack.astro";
+import Profile from "../components/Profile.astro";
 ---
 
 <Layout
 	title="Home"
-	description="About me, tech stack, friends, and reviews all found here!"
+	description="About me, tech stack, friends, and reviewdb all found here!"
 >
 	<div class="mx-auto max-w-5xl px-6 py-16">
 		<div class="grid grid-cols-1 gap-x-16 gap-y-12 md:grid-cols-2">
 			<!-- LEFT COLUMN -->
 			<div class="flex flex-col gap-12">
-				<!-- profile -->
-				<section class="flex flex-col gap-6">
-					<div class="flex items-center gap-6">
-						<div class="relative shrink-0">
-							<Image
-								src="https://avatars.githubusercontent.com/u/171467756"
-								alt="seraphicfae"
-								width={96}
-								height={96}
-								class="h-24 w-24 rounded-4xl object-cover"
-							/>
-						</div>
-						<div class="flex flex-col gap-1">
-							<h1 class="text-2xl font-black">Mei Mei</h1>
-							<p class="text-sm text-neutral-500 dark:text-neutral-400">
-								@seraphicfae
-							</p>
-							<p class="text-xs text-neutral-500 dark:text-neutral-400">
-								she/her
-							</p>
-						</div>
-					</div>
-
-					<div class="flex flex-col gap-2">
-						<div
-							class="flex items-center gap-2 text-sm text-neutral-500 dark:text-neutral-400"
-						>
-							<Icon name="lucide:cake" class="size-4 shrink-0" />
-							<span>Adult</span>
-						</div>
-						<div
-							class="flex items-center gap-2 text-sm text-neutral-500 dark:text-neutral-400"
-						>
-							<Icon name="lucide:map-pin" class="size-4 shrink-0" />
-							<span>North America</span>
-						</div>
-						<div
-							class="flex items-center gap-2 text-sm text-neutral-500 dark:text-neutral-400"
-						>
-							<Icon name="lucide:languages" class="size-4 shrink-0" />
-							<span>EN / ES</span>
-						</div>
-					</div>
-				</section>
+				<Profile />
 
 				<!-- about me -->
 				<section class="flex flex-col gap-3">
 					<div class="flex items-center gap-2">
 						<Icon name="lucide:pen-line" class="size-4 shrink-0" />
-						<span class="font-black tracking-widest uppercase">About me</span>
+						<h2 class="font-black tracking-widest uppercase">About me</h2>
 					</div>
 					<p
 						class="text-sm leading-relaxed text-neutral-600 dark:text-neutral-300"
@@ -90,125 +32,13 @@ try {
 						emulation, indie games, and multimedia formats like Opus and JXL.
 					</p>
 				</section>
-
-				<!-- tech stack -->
-				<section class="flex flex-col gap-3">
-					<div class="flex items-center gap-2">
-						<Icon name="lucide:code-xml" class="size-4 shrink-0" />
-						<h2 class="font-black tracking-widest uppercase">stack & tools</h2>
-					</div>
-					<div class="flex flex-wrap gap-2">
-						{
-							stack.map((item) => (
-								<a
-									href={item.url}
-									target="_blank"
-									rel="noopener noreferrer"
-									style={`--brand: ${item.color}`}
-									class="group flex items-center gap-2 rounded-lg border border-neutral-200 px-3 py-1.5 transition-all duration-200 hover:border-transparent hover:bg-(--brand) dark:border-neutral-800"
-								>
-									<Icon
-										name={item.icon}
-										class="size-4 text-neutral-500 transition-colors duration-200 group-hover:text-white dark:text-neutral-400"
-									/>
-									<span class="text-neutral-500 transition-colors duration-200 group-hover:text-white dark:text-neutral-400">
-										{item.name}
-									</span>
-								</a>
-							))
-						}
-					</div>
-				</section>
+				<TechStack />
 			</div>
 
 			<!-- RIGHT COLUMN -->
 			<div class="flex flex-col gap-12">
-				<!-- friends -->
-				<section class="flex flex-col gap-3">
-					<div class="flex items-center gap-2">
-						<Icon name="lucide:user-plus" class="size-4 shrink-0" />
-						<h2 class="font-black tracking-widest uppercase">friends</h2>
-					</div>
-					<div class="flex flex-wrap gap-3">
-						{
-							friends.map((friend) => (
-								<a
-									href={friend.source}
-									target="_blank"
-									rel="noopener noreferrer"
-									aria-label={friend.name}
-									class="group relative"
-								>
-									<img
-										src={friend.avatar}
-										alt={friend.name}
-										width={40}
-										height={40}
-										loading="lazy"
-										decoding="async"
-										class="h-10 w-10 rounded-[14px] object-cover ring-2 ring-transparent transition-all group-hover:ring-neutral-300 dark:group-hover:ring-neutral-600"
-									/>
-									<span class="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 rounded bg-neutral-900 px-2 py-1 text-xs whitespace-nowrap text-white opacity-0 transition-opacity group-hover:opacity-100 dark:bg-neutral-100 dark:text-neutral-900">
-										{friend.name}
-									</span>
-								</a>
-							))
-						}
-					</div>
-				</section>
-
-				<!-- reviewdb -->
-				<section class="flex flex-col gap-3">
-					<div class="flex items-center gap-2">
-						<Icon name="lucide:message-square-text" class="size-4 shrink-0" />
-						<h2 class="font-black tracking-widest uppercase">reviewdb</h2>
-					</div>
-					{
-						reviews.length === 0 ? (
-							<p class="text-sm text-neutral-500 dark:text-neutral-400">
-								Nothing to see here
-							</p>
-						) : (
-							<div class="flex flex-col gap-3">
-								{reviews.slice(0, 5).map((review: any) => (
-									<div class="flex items-start gap-3">
-										<img
-											src={review.sender.profilePhoto}
-											alt={review.sender.username}
-											width={32}
-											height={32}
-											loading="lazy"
-											decoding="async"
-											class="h-8 w-8 shrink-0 rounded-[10px] object-cover"
-										/>
-										<div class="min-w-0 flex-1">
-											<div class="flex items-baseline gap-2">
-												<h class="text-xs font-medium text-neutral-600 dark:text-neutral-300">
-													{review.sender.username}
-												</h>
-												<span class="text-[11px] text-neutral-400 dark:text-neutral-500">
-													{new Date(
-														review.timestamp * 1000,
-													).toLocaleDateString()}
-												</span>
-											</div>
-											<p class="text-sm wrap-break-word text-neutral-500 dark:text-neutral-400">
-												{review.comment}
-											</p>
-										</div>
-										{review.score != null && (
-											<div class="flex w-6 shrink-0 flex-col items-center gap-0.5 pt-0.5 text-neutral-400 dark:text-neutral-500">
-												<Icon name="lucide:chevron-up" class="size-3.5" />
-												<span class="text-xs font-medium">{review.score}</span>
-												<Icon name="lucide:chevron-down" class="size-3.5" />
-											</div>
-										)}
-									</div>
-								))}
-							</div>
-						)
-					}
-				</section>
+				<Friends />
+				<ReviewDB />
 			</div>
 		</div>
 	</div>
