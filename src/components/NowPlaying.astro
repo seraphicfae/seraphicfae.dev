@@ -1,0 +1,183 @@
+---
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import {
+	LASTFM_USERNAME,
+	getImageUrl,
+	formatTime,
+	isNowPlaying,
+	fetchRecentTracks,
+	type LastFmTrack,
+} from "../utils/lastfm";
+
+let tracks: LastFmTrack[] = [];
+try {
+	tracks = await fetchRecentTracks();
+} catch (e) {
+	console.error("Failed fetching Last.fm at build time:", e);
+}
+---
+
+<section class="flex flex-col gap-4">
+	<div class="flex items-center gap-2">
+		<Icon name="lucide:audio-lines" class="size-4 shrink-0" />
+		<h2 class="font-black tracking-widest uppercase">now playing</h2>
+	</div>
+
+	<ul id="lastfm-tracks" class="flex flex-col">
+		{
+			tracks.length === 0 ? (
+				<li class="py-2.5 text-sm text-neutral-500 dark:text-neutral-400">
+					Nothing to see here
+				</li>
+			) : (
+				tracks.map((track) => {
+					const nowPlaying = isNowPlaying(track);
+					const art = getImageUrl(track);
+					return (
+						<li>
+							<a
+								href={track.url}
+								target="_blank"
+								rel="noopener noreferrer"
+								class:list={[
+									"group -mx-2 flex items-center gap-3 rounded-lg px-2 py-2.5 transition-colors hover:bg-black/3",
+									nowPlaying && "bg-black/5",
+								]}
+							>
+								<span class="size-11 shrink-0 overflow-hidden rounded-lg bg-black/5">
+									{art && (
+										<Image
+											src={art}
+											alt=""
+											width={88}
+											height={88}
+											loading="lazy"
+											decoding="async"
+											class="size-full object-cover"
+										/>
+									)}
+								</span>
+								<span class="min-w-0 flex-1">
+									<span class="block truncate text-sm font-semibold group-hover:underline">
+										{track.name}
+									</span>
+									<span class="block truncate text-sm opacity-60">
+										{track.artist?.["#text"] ?? "Unknown Artist"} &middot;{" "}
+										<span class:list={[nowPlaying]}>
+											{nowPlaying
+												? "now playing"
+												: track.date
+													? formatTime(track.date.uts)
+													: ""}
+										</span>
+									</span>
+								</span>
+							</a>
+						</li>
+					);
+				})
+			)
+		}
+	</ul>
+
+	<a
+		href={`https://www.last.fm/user/${LASTFM_USERNAME}`}
+		target="_blank"
+		rel="noopener noreferrer"
+		class="group flex items-center justify-center gap-1 text-xs font-bold tracking-widest uppercase opacity-60 transition-opacity hover:opacity-100"
+	>
+		view more
+		<Icon
+			name="lucide:arrow-up-right"
+			class="size-3.5 transition-transform group-hover:rotate-45"
+		/>
+	</a>
+</section>
+
+<template id="track-row-template">
+	<li>
+		<a
+			class="group -mx-2 flex items-center gap-3 rounded-lg px-2 py-2.5 transition-colors hover:bg-black/3"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			<span class="size-11 shrink-0 overflow-hidden rounded-lg bg-black/5">
+				<img
+					class="track-art size-full object-cover"
+					alt=""
+					loading="lazy"
+					decoding="async"
+				/>
+			</span>
+			<span class="min-w-0 flex-1">
+				<span
+					class="track-name block truncate text-sm font-semibold group-hover:underline"
+				></span>
+				<span class="block truncate text-sm opacity-60">
+					<span class="track-artist"></span> &middot; <span class="track-meta"
+					></span>
+				</span>
+			</span>
+		</a>
+	</li>
+</template>
+
+<script>
+	import {
+		getImageUrl,
+		formatTime,
+		isNowPlaying,
+		fetchRecentTracks,
+		type LastFmTrack,
+	} from "../utils/lastfm";
+
+	const listEl = document.getElementById("lastfm-tracks");
+	const template = document.getElementById(
+		"track-row-template",
+	) as HTMLTemplateElement | null;
+
+	function buildRow(track: LastFmTrack): Node {
+		const node = template!.content.cloneNode(true) as DocumentFragment;
+		const a = node.querySelector("a")!;
+		const image = node.querySelector<HTMLImageElement>(".track-art")!;
+		const source = getImageUrl(track);
+
+		a.href = track.url;
+		if (source) {
+			image.src = source;
+		} else {
+			image.remove();
+		}
+
+		node.querySelector(".track-name")!.textContent = track.name;
+		node.querySelector(".track-artist")!.textContent =
+			track.artist?.["#text"] ?? "Unknown Artist";
+
+		const metaEl = node.querySelector(".track-meta")!;
+		if (isNowPlaying(track)) {
+			metaEl.textContent = "now playing";
+			a.classList.add("bg-black/5");
+		} else if (track.date) {
+			metaEl.textContent = formatTime(track.date.uts);
+		} else {
+			metaEl.textContent = "";
+		}
+
+		return node;
+	}
+
+	async function refresh() {
+		if (!listEl || !template) return;
+		try {
+			const tracks = await fetchRecentTracks();
+			if (!tracks.length) return;
+			listEl.replaceChildren(...tracks.map(buildRow));
+		} catch (e) {
+			console.error("Failed fetching from Last.fm", e);
+		}
+	}
+
+	refresh();
+	setInterval(refresh, 30000);
+</script>

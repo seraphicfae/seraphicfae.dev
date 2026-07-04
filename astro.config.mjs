@@ -23,6 +23,10 @@ export default defineConfig({
 				protocol: "https",
 				hostname: "cdn.discordapp.com",
 			},
+			{
+				protocol: "https",
+				hostname: "lastfm.freetls.fastly.net",
+			},
 		],
 	},
 });
