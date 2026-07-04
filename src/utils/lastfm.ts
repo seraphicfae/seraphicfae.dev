@@ -61,5 +61,21 @@ export async function fetchRecentTracks(limit = 5): Promise<LastFmTrack[]> {
 	if (data.error) throw new Error(data.message ?? "Last.fm API error");
 
 	const track = data.recenttracks?.track ?? [];
-	return Array.isArray(track) ? track : [track];
+	let tracks = Array.isArray(track) ? track : [track];
+
+	if (tracks.length > 1 && isNowPlaying(tracks[0])) {
+		const currentTrack = tracks[0];
+		const nextTrack = tracks[1];
+		const isSameName =
+			currentTrack.name.toLowerCase() === nextTrack.name.toLowerCase();
+		const isSameArtist =
+			(currentTrack.artist?.["#text"] ?? "").toLowerCase() ===
+			(nextTrack.artist?.["#text"] ?? "").toLowerCase();
+
+		if (isSameName && isSameArtist) {
+			tracks = [currentTrack, ...tracks.slice(2)];
+		}
+	}
+
+	return tracks;
 }

@@ -1,0 +1,98 @@
+---
+import { Icon } from "astro-icon/components";
+import {
+	LASTFM_USERNAME,
+	fetchRecentTracks,
+	type LastFmTrack,
+} from "../utils/lastfm";
+
+let tracks: LastFmTrack[] = [];
+try {
+	tracks = await fetchRecentTracks();
+} catch (e) {
+	console.error("Failed fetching Last.fm at build time:", e);
+}
+---
+
+<section class="flex flex-col gap-4">
+	<div class="flex items-center gap-2">
+		<Icon name="lucide:audio-lines" class="size-4 shrink-0" />
+		<h2 class="font-black tracking-widest uppercase">last.fm</h2>
+	</div>
+
+	<ul id="lastfm-tracks" class="flex flex-col">
+		{
+			tracks.length === 0 && (
+				<li class="py-2.5 text-sm text-neutral-500 dark:text-neutral-400">
+					Nothing to see here
+				</li>
+			)
+		}
+	</ul>
+
+	<a
+		href={`https://www.last.fm/user/${LASTFM_USERNAME}`}
+		target="_blank"
+		rel="noopener noreferrer"
+		class="group flex items-center justify-center gap-1 text-xs font-bold tracking-widest uppercase opacity-60 transition-opacity hover:opacity-100"
+	>
+		view more
+		<Icon
+			name="lucide:arrow-up-right"
+			class="size-3.5 transition-transform group-hover:rotate-45"
+		/>
+	</a>
+</section>
+
+<script>
+	import {
+		getImageUrl,
+		formatTime,
+		isNowPlaying,
+		fetchRecentTracks,
+		type LastFmTrack,
+	} from "../utils/lastfm";
+
+	const listEl = document.getElementById("lastfm-tracks");
+
+	function renderTrack(track: LastFmTrack): string {
+		const nowPlaying = isNowPlaying(track);
+		const art = getImageUrl(track);
+		const meta = nowPlaying
+			? "now playing"
+			: track.date
+				? formatTime(track.date.uts)
+				: "";
+
+		return `
+			<li>
+				<a href="${track.url}" target="_blank" rel="noopener noreferrer"
+				   class="group -mx-2 flex items-center gap-3 rounded-lg px-2 py-2.5 transition-colors hover:bg-black/3 ${nowPlaying ? "bg-emerald-600/8 hover:bg-emerald-600/3" : ""}">
+					<span class="size-11 shrink-0 overflow-hidden rounded-lg bg-black/5">
+						${art ? `<img src="${art}" alt="" loading="lazy" decoding="async" class="size-full object-cover" />` : ""}
+					</span>
+					<span class="min-w-0 flex-1">
+						<span class="block truncate text-sm font-semibold group-hover:underline">${track.name}</span>
+						<span class="block truncate text-sm opacity-60">
+							${track.artist?.["#text"] ?? "Unknown Artist"} &middot; <span>${meta}</span>
+						</span>
+					</span>
+				</a>
+			</li>
+		`;
+	}
+
+	async function refresh(initialTracks?: LastFmTrack[]) {
+		if (!listEl) return;
+		try {
+			const tracks = initialTracks ?? (await fetchRecentTracks());
+			if (!tracks.length) return;
+			listEl.innerHTML = tracks.map(renderTrack).join("");
+		} catch (e) {
+			console.error("Failed fetching from Last.fm", e);
+		}
+	}
+	const serverTracks = JSON.parse(listEl?.dataset.initial || "[]");
+	refresh(serverTracks.length ? serverTracks : undefined);
+	setInterval(() => refresh(), 30000);
+</script>
