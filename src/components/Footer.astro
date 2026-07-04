@@ -2,10 +2,10 @@
 import { Icon } from "astro-icon/components";
 ---
 
-<footer
-	class="mt-auto border-t-2 border-dashed border-neutral-200 dark:border-neutral-800"
->
-	<div class="mx-auto flex h-14 max-w-4xl items-center justify-between px-6">
+<footer class="mt-auto flex justify-center px-6 py-6">
+	<div
+		class="flex items-center gap-6 rounded-full border border-neutral-200/70 bg-white/80 px-6 py-3 text-sm text-neutral-500 shadow-lg backdrop-blur-xl dark:border-neutral-800/70 dark:bg-neutral-950/80 dark:text-neutral-300"
+	>
 		<a
 			href="https://www.oracle.com/erp/"
 			target="_blank"
@@ -16,14 +16,17 @@ import { Icon } from "astro-icon/components";
 			Psst, you're cute
 			<Icon name="lucide:heart" />
 		</a>
+
+		<span class="h-3 w-px bg-neutral-300 dark:bg-neutral-700"></span>
+
 		<a
 			href="https://github.com/seraphicfae/seraphicfae.dev"
 			target="_blank"
 			rel="noopener noreferrer"
 			aria-label="GitHub"
-			class="text-neutral-400 transition-colors hover:text-neutral-900 dark:hover:text-neutral-100"
+			class="transition-colors hover:text-neutral-900 dark:hover:text-neutral-100"
 		>
-			<Icon name="simple-icons:github" class="size-6" />
+			<Icon name="simple-icons:github" class="h-4 w-4" />
 		</a>
 	</div>
 </footer>
