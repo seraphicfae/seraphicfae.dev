@@ -20,7 +20,11 @@ try {
 		<h2 class="font-black tracking-widest uppercase">last.fm</h2>
 	</div>
 
-	<ul id="lastfm-tracks" class="flex flex-col">
+	<ul
+		id="lastfm-tracks"
+		class="flex flex-col"
+		data-initial={JSON.stringify(tracks)}
+	>
 		{
 			tracks.length === 0 && (
 				<li class="py-2.5 text-sm text-neutral-500 dark:text-neutral-400">
@@ -59,7 +63,7 @@ try {
 		const nowPlaying = isNowPlaying(track);
 		const art = getImageUrl(track);
 		const meta = nowPlaying
-			? "now playing"
+			? `<span class="font-bold text-emerald-300">now playing</span>`
 			: track.date
 				? formatTime(track.date.uts)
 				: "";
@@ -93,6 +97,9 @@ try {
 		}
 	}
 	const serverTracks = JSON.parse(listEl?.dataset.initial || "[]");
-	refresh(serverTracks.length ? serverTracks : undefined);
+	if (listEl && serverTracks.length) {
+		listEl.innerHTML = serverTracks.map(renderTrack).join("");
+	}
+	refresh();
 	setInterval(() => refresh(), 30000);
 </script>
