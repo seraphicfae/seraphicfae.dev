@@ -4,7 +4,7 @@ import {
 	LASTFM_USERNAME,
 	fetchRecentTracks,
 	type LastFmTrack,
-} from "../utils/lastfm";
+} from "../libs/lastfm";
 
 let tracks: LastFmTrack[] = [];
 try {
@@ -55,7 +55,7 @@ try {
 		isNowPlaying,
 		fetchRecentTracks,
 		type LastFmTrack,
-	} from "../utils/lastfm";
+	} from "../libs/lastfm";
 
 	const listEl = document.getElementById("lastfm-tracks");
 
