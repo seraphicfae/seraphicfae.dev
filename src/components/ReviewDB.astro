@@ -1,6 +1,5 @@
 ---
 import { Icon } from "astro-icon/components";
-import { Image } from "astro:assets";
 const DISCORD_ID = "1009098164864823441";
 
 let reviews = [];
@@ -32,11 +31,11 @@ try {
 			<div class="flex flex-col gap-3">
 				{reviews.slice(0, 5).map((review: any) => (
 					<div class="flex items-start gap-3">
-						<Image
+						<img
 							src={review.sender.profilePhoto}
 							alt={review.sender.username}
-							width={180}
-							height={180}
+							width={40}
+							height={40}
 							loading="eager"
 							decoding="async"
 							class="h-10 w-10 shrink-0 rounded-lg object-cover"
