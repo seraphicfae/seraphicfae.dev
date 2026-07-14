@@ -1,23 +1,44 @@
 ---
 import { Icon } from "astro-icon/components";
-const DISCORD_ID = "1009098164864823441";
 
-let reviews = [];
+interface ReviewSender {
+	username: string;
+	profilePhoto: string;
+}
+
+interface Review {
+	sender: ReviewSender;
+	timestamp: number;
+	comment: string;
+	score: number | null;
+}
+
+interface ReviewApiResponse {
+	reviews: Review[];
+}
+
+const DISCORD_ID = "1009098164864823441";
+const reviewsPerPage = 5;
+
+let reviews: Review[] = [];
 try {
-	const res = await fetch(
+	const response = await fetch(
 		`https://manti.vendicated.dev/api/reviewdb/users/${DISCORD_ID}/reviews?flags=2`,
 	);
-	const data = await res.json();
+	const data = (await response.json()) as ReviewApiResponse;
 	reviews = (data.reviews ?? []).sort(
-		(a: any, b: any) => b.timestamp - a.timestamp,
+		(firstReview, secondReview) =>
+			secondReview.timestamp - firstReview.timestamp,
 	);
-} catch (e) {
-	console.error("mantikafasi pls fix:", e);
+} catch (error) {
+	console.error("mantikafasi pls fix:", error);
 	reviews = [];
 }
+
+const totalPageCount = Math.ceil(reviews.length / reviewsPerPage);
 ---
 
-<section class="flex flex-col gap-3">
+<section id="reviewdb-section" class="flex flex-col gap-3">
 	<div class="flex items-center gap-2">
 		<Icon name="lucide:message-square-text" class="size-4 shrink-0" />
 		<h2 class="font-black tracking-widest uppercase">reviewdb</h2>
@@ -29,40 +50,125 @@ try {
 			</p>
 		) : (
 			<div class="flex flex-col gap-3">
-				{reviews.slice(0, 5).map((review: any) => (
-					<div class="flex items-start gap-3">
-						<img
-							src={review.sender.profilePhoto}
-							alt={review.sender.username}
-							width={40}
-							height={40}
-							loading="eager"
-							decoding="async"
-							class="h-10 w-10 shrink-0 rounded-lg object-cover"
-						/>
-						<div class="min-w-0 flex-1">
-							<div class="flex items-baseline gap-2">
-								<h class="text-xs font-medium text-neutral-600 dark:text-neutral-300">
-									{review.sender.username}
-								</h>
-								<span class="text-xs text-neutral-500 dark:text-neutral-400">
-									{new Date(review.timestamp * 1000).toLocaleDateString()}
-								</span>
-							</div>
-							<p class="text-sm wrap-break-word text-neutral-500 dark:text-neutral-400">
-								{review.comment}
-							</p>
-						</div>
-						{review.score != null && (
-							<div class="flex w-6 shrink-0 flex-col items-center gap-0.5 pt-0.5 text-neutral-400 dark:text-neutral-500">
-								<Icon name="lucide:chevron-up" class="size-3.5" />
-								<span class="text-xs font-medium">{review.score}</span>
-								<Icon name="lucide:chevron-down" class="size-3.5" />
-							</div>
-						)}
+				{Array.from({ length: totalPageCount }).map((_, pageIndex) => (
+					<div
+						class={`review-page flex flex-col gap-3 ${pageIndex === 0 ? "" : "hidden"}`}
+						data-page-index={pageIndex}
+					>
+						{reviews
+							.slice(
+								pageIndex * reviewsPerPage,
+								pageIndex * reviewsPerPage + reviewsPerPage,
+							)
+							.map((review) => (
+								<div class="flex items-start gap-3">
+									<img
+										src={review.sender.profilePhoto}
+										alt={review.sender.username}
+										width={40}
+										height={40}
+										loading="eager"
+										decoding="async"
+										class="h-10 w-10 shrink-0 rounded-lg object-cover"
+									/>
+									<div class="min-w-0 flex-1">
+										<div class="flex items-baseline gap-2">
+											<h class="text-xs font-medium text-neutral-600 dark:text-neutral-300">
+												{review.sender.username}
+											</h>
+											<span class="text-xs text-neutral-500 dark:text-neutral-400">
+												{new Date(review.timestamp * 1000).toLocaleDateString()}
+											</span>
+										</div>
+										<p class="text-sm wrap-break-word text-neutral-500 dark:text-neutral-400">
+											{review.comment}
+										</p>
+									</div>
+									{review.score != null && (
+										<div class="flex w-6 shrink-0 flex-col items-center gap-0.5 pt-0.5 text-neutral-400 dark:text-neutral-500">
+											<Icon name="lucide:chevron-up" class="size-3.5" />
+											<span class="text-xs font-medium">{review.score}</span>
+											<Icon name="lucide:chevron-down" class="size-3.5" />
+										</div>
+									)}
+								</div>
+							))}
 					</div>
 				))}
+
+				{totalPageCount > 1 && (
+					<div class="flex items-center justify-between pt-1">
+						<button
+							id="reviewdb-previous-button"
+							type="button"
+							disabled
+							class="cursor-pointer text-xs font-medium text-neutral-500 hover:text-neutral-700 disabled:cursor-not-allowed disabled:opacity-40 dark:text-neutral-400 dark:hover:text-neutral-200"
+						>
+							Previous
+						</button>
+						<span
+							id="reviewdb-page-indicator"
+							class="text-xs text-neutral-500 dark:text-neutral-400"
+						>
+							Page 1 of {totalPageCount}
+						</span>
+						<button
+							id="reviewdb-next-button"
+							type="button"
+							class="cursor-pointer text-xs font-medium text-neutral-500 hover:text-neutral-700 disabled:cursor-not-allowed disabled:opacity-40 dark:text-neutral-400 dark:hover:text-neutral-200"
+						>
+							Next
+						</button>
+					</div>
+				)}
 			</div>
 		)
 	}
 </section>
+
+<script>
+	const reviewSection = document.getElementById("reviewdb-section");
+	const previousButton = document.getElementById(
+		"reviewdb-previous-button",
+	) as HTMLButtonElement | null;
+	const nextButton = document.getElementById(
+		"reviewdb-next-button",
+	) as HTMLButtonElement | null;
+	const pageIndicatorElement = document.getElementById(
+		"reviewdb-page-indicator",
+	);
+
+	if (reviewSection && previousButton && nextButton && pageIndicatorElement) {
+		const reviewPageElements =
+			reviewSection.querySelectorAll<HTMLElement>(".review-page");
+		const totalPageCount = reviewPageElements.length;
+		let currentPageIndex = 0;
+
+		function updateVisiblePage(): void {
+			reviewPageElements.forEach((reviewPageElement, pageIndex) => {
+				reviewPageElement.classList.toggle(
+					"hidden",
+					pageIndex !== currentPageIndex,
+				);
+			});
+
+			pageIndicatorElement!.textContent = `Page ${currentPageIndex + 1} of ${totalPageCount}`;
+			previousButton!.disabled = currentPageIndex === 0;
+			nextButton!.disabled = currentPageIndex === totalPageCount - 1;
+		}
+
+		previousButton.addEventListener("click", () => {
+			if (currentPageIndex > 0) {
+				currentPageIndex = currentPageIndex - 1;
+				updateVisiblePage();
+			}
+		});
+
+		nextButton.addEventListener("click", () => {
+			if (currentPageIndex < totalPageCount - 1) {
+				currentPageIndex = currentPageIndex + 1;
+				updateVisiblePage();
+			}
+		});
+	}
+</script>
