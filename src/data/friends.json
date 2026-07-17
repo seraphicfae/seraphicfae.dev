@@ -1,57 +1,68 @@
 [
 	{
-		"name": "Snp",
+		"name": "snp",
 		"source": "https://github.com/snp5164",
+		"color": "#72B4F1",
 		"avatar": "https://avatars.githubusercontent.com/u/97794534?s=180"
 	},
 	{
 		"name": "Rosie",
 		"source": "https://github.com/acquitelol",
+		"color": "#FFC0CB",
 		"avatar": "https://avatars.githubusercontent.com/u/94182437?s=180"
 	},
 	{
 		"name": "Sunkey",
 		"source": "https://github.com/OmegaSunkey",
+		"color": "#73B2E6",
 		"avatar": "https://omegasunkey.pages.dev/avatar.webp"
 	},
 	{
 		"name": "Luna",
 		"source": "https://github.com/maukkis",
+		"color": "#FFC0CB",
 		"avatar": "https://avatars.githubusercontent.com/u/82530388?s=180"
 	},
 	{
 		"name": "Leyley",
 		"source": "https://github.com/ashleyirispuppy143",
+		"color": "#FFABCC",
 		"avatar": "https://avatars.githubusercontent.com/u/65588168?s=180"
 	},
 	{
 		"name": "Ushie",
 		"source": "https://github.com/Ushie",
+		"color": "#FFC0CB",
 		"avatar": "https://avatars.githubusercontent.com/u/79272171?s=180"
 	},
 	{
 		"name": "Mayu",
 		"source": "https://seraphicfae.dev",
+		"color": "#FFC0CB",
 		"avatar": "https://avatars.githubusercontent.com/u/141259991?s=180"
 	},
 	{
 		"name": "Nettomo",
 		"source": "https://github.com/nettomodev",
+		"color": "#FFC0CB",
 		"avatar": "https://avatars.githubusercontent.com/u/272322620?s=180"
 	},
 	{
 		"name": "Chloe",
 		"source": "https://github.com/chxry",
+		"color": "#FFC0CB",
 		"avatar": "https://avatars.githubusercontent.com/u/38386107?s=180"
 	},
 	{
 		"name": "Llsc",
 		"source": "https://github.com/llsc12",
+		"color": "#FF83B7",
 		"avatar": "https://avatars.githubusercontent.com/u/42747613?s=180"
 	},
 	{
 		"name": "Mae",
 		"source": "https://mae.snp.cat",
+		"color": "#D5788E",
 		"avatar": "https://avatars.githubusercontent.com/u/76236417?s=180"
 	}
 ]
