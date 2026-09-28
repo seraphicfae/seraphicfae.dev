@@ -1,0 +1,49 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import erp from "../assets/ERP_modules.webp";
+---
+
+<Layout title="erp" description="Wait, huh- how did you get here...?">
+	<div class="mx-auto flex max-w-4xl flex-col gap-8 px-6 py-16">
+		<Image
+			src={erp}
+			alt="erp"
+			loading="eager"
+			width={800}
+			quality={80}
+			class="max-h-100 w-full rounded-lg object-cover"
+		/>
+		<div class="flex flex-col gap-3">
+			<h1 class="font-black">
+				Looking to ERP with Mei Mei? You've come to right place~
+			</h1>
+			<p>
+				Enterprise resource planning, of course...What did you think I meant?
+				You know this is for: is the integrated management of main business
+				processes, often in real time and mediated by software and technology,
+				right?
+			</p>
+		</div>
+
+		<div class="flex flex-col gap-3">
+			<h1 class="font-black tracking-widest uppercase">Learn more</h1>
+			<a
+				href="https://www.oracle.com/erp/"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="text-accent hover:text-accent-hover underline"
+			>
+				See a live demo
+			</a>
+			<a
+				href="https://en.wikipedia.org/wiki/Enterprise_resource_planning"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="text-accent hover:text-accent-hover underline"
+			>
+				Read the foreplay ;)
+			</a>
+		</div>
+	</div>
+</Layout>
