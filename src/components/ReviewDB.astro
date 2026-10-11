@@ -115,38 +115,42 @@ const totalPageCount = Math.ceil(reviews.length / reviewsPerPage);
 </section>
 
 <script>
-	const reviewSection = document.getElementById("reviewdb-section");
-	const previousButton = document.getElementById(
-		"previous-button",
-	) as HTMLButtonElement | null;
-	const nextButton = document.getElementById(
-		"next-button",
-	) as HTMLButtonElement | null;
-	const pageIndicator = document.getElementById("page-indicator");
+	function pagination() {
+		const reviewSection = document.getElementById("reviewdb-section");
+		const previousButton = document.getElementById(
+			"previous-button",
+		) as HTMLButtonElement | null;
+		const nextButton = document.getElementById(
+			"next-button",
+		) as HTMLButtonElement | null;
+		const pageIndicator = document.getElementById("page-indicator");
 
-	if (reviewSection && previousButton && nextButton && pageIndicator) {
-		const prevBtn = previousButton;
-		const nextBtn = nextButton;
-		const indicator = pageIndicator;
-		const pages = reviewSection.querySelectorAll<HTMLElement>(".review-page");
-		const totalPageCount = pages.length;
-		let currentPageIndex = 0;
+		if (reviewSection && previousButton && nextButton && pageIndicator) {
+			const prevBtn = previousButton;
+			const nextBtn = nextButton;
+			const indicator = pageIndicator;
+			const pages = reviewSection.querySelectorAll<HTMLElement>(".review-page");
+			const totalPageCount = pages.length;
+			let currentPageIndex = 0;
 
-		function goToPage(delta: number): void {
-			currentPageIndex = Math.min(
-				Math.max(currentPageIndex + delta, 0),
-				totalPageCount - 1,
-			);
+			function goToPage(delta: number): void {
+				currentPageIndex = Math.min(
+					Math.max(currentPageIndex + delta, 0),
+					totalPageCount - 1,
+				);
 
-			pages.forEach((page, i) =>
-				page.classList.toggle("hidden", i !== currentPageIndex),
-			);
-			indicator.textContent = `Page ${currentPageIndex + 1} of ${totalPageCount}`;
-			prevBtn.disabled = currentPageIndex === 0;
-			nextBtn.disabled = currentPageIndex === totalPageCount - 1;
+				pages.forEach((page, i) =>
+					page.classList.toggle("hidden", i !== currentPageIndex),
+				);
+				indicator.textContent = `Page ${currentPageIndex + 1} of ${totalPageCount}`;
+				prevBtn.disabled = currentPageIndex === 0;
+				nextBtn.disabled = currentPageIndex === totalPageCount - 1;
+			}
+
+			prevBtn.addEventListener("click", () => goToPage(-1));
+			nextBtn.addEventListener("click", () => goToPage(1));
 		}
-
-		prevBtn.addEventListener("click", () => goToPage(-1));
-		nextBtn.addEventListener("click", () => goToPage(1));
 	}
+	document.addEventListener("astro:page-load", pagination);
+	pagination();
 </script>
