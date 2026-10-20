@@ -41,70 +41,72 @@ const socialImage = new URL(image, Astro.site);
 		<meta property="og:image" content={socialImage} />
 		<meta name="theme-color" content="#FF00FF" />
 		<ClientRouter />
-		<script id="discord:component-embed" type="application/json">
-			{
-				"component": {
-					"type": 17,
-					"spoiler": false,
-					"accent_color": 1752220,
-					"components": [
+		<script
+			id="discord:component-embed"
+			type="application/json"
+			set:html={JSON.stringify({
+				component: {
+					type: 17,
+					spoiler: false,
+					accent_color: 0xff00ff,
+					components: [
 						{
-							"type": 9,
-							"components": [
+							type: 9,
+							components: [
 								{
-									"type": 10,
-									"content": "# **Welcome to my site**."
-								}
+									type: 10,
+									content: `# **${pageTitle}**\n${description}`,
+								},
 							],
-							"accessory": {
-								"type": 2,
-								"style": 5,
-								"url": "https://seraphicfae.dev",
-								"label": "Open"
-							}
+							accessory: {
+								type: 2,
+								style: 5,
+								url: canonicalURL.href,
+								label: "Open",
+							},
 						},
 						{
-							"type": 12,
-							"items": [
+							type: 12,
+							items: [
 								{
-									"media": {
-										"url": "https://seraphicfae.dev/opengraph_image.jpg"
+									media: {
+										url: socialImage.href,
 									},
-									"description": "Opengraph image"
-								}
-							]
+									description: pageTitle,
+								},
+							],
 						},
 						{
-							"type": 14,
-							"spacing": 1
+							type: 14,
+							spacing: 1,
 						},
 						{
-							"type": 1,
-							"components": [
+							type: 1,
+							components: [
 								{
-									"type": 2,
-									"style": 5,
-									"url": "https://seraphicfae.dev/",
-									"label": "Home"
+									type: 2,
+									style: 5,
+									url: new URL("/", Astro.site).href,
+									label: "Home",
 								},
 								{
-									"type": 2,
-									"style": 5,
-									"url": "https://seraphicfae.dev/projects/",
-									"label": "Projects"
+									type: 2,
+									style: 5,
+									url: new URL("/projects/", Astro.site).href,
+									label: "Projects",
 								},
 								{
-									"type": 2,
-									"style": 5,
-									"url": "https://seraphicfae.dev/blog/",
-									"label": "Blog"
-								}
-							]
-						}
-					]
-				}
-			}
-		</script>
+									type: 2,
+									style: 5,
+									url: new URL("/blog/", Astro.site).href,
+									label: "Blog",
+								},
+							],
+						},
+					],
+				},
+			})}
+		/>
 	</head>
 	<body class="bg-background text-foreground flex min-h-screen flex-col">
 		<Header />
