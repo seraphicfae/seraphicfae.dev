@@ -58,17 +58,10 @@ const socialImage = new URL(image, Astro.site);
 									content: `# **${pageTitle}**\n${description}`,
 								},
 							],
-						},
-						{
-							type: 11,
-							items: [
-								{
-									media: {
-										url: socialImage.href,
-									},
-									description: pageTitle,
-								},
-							],
+							accessory: {
+								type: 11,
+								url: socialImage.href,
+							},
 						},
 						{
 							type: 14,
