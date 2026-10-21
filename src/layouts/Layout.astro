@@ -60,7 +60,9 @@ const socialImage = new URL(image, Astro.site);
 							],
 							accessory: {
 								type: 11,
-								url: socialImage.href,
+								media: {
+									url: socialImage.href,
+								},
 							},
 						},
 						{
